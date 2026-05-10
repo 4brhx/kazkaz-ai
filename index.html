@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أكاديمية أبو البزيز | كورسات وكتب تجارية متخصصة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c8982a;--gold-light:#f5c842;--gold-pale:#fef9ee;
+  --dark:#0b0b0f;--dark2:#13131a;--dark3:#1a1a24;--dark4:#21212e;
+  --text:#eeecf0;--text-muted:#9997a8;--text-faint:#55536a;
+  --accent:#e05c2a;--accent2:#c44b1e;
+  --ai-purple:#7c3aed;--ai-purple2:#9f5ffd;--ai-blue:#3b82f6;
+  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.07);--surface3:rgba(255,255,255,0.10);
+  --border:rgba(255,255,255,0.07);--border2:rgba(200,152,42,0.28);--border3:rgba(200,152,42,0.12);
+  --radius:18px;--radius-sm:11px;--radius-xs:7px;--radius-full:9999px;
+  --transition:220ms cubic-bezier(0.16,1,0.3,1);
+  --shadow-sm:0 2px 12px rgba(0,0,0,0.4);
+  --shadow-md:0 8px 32px rgba(0,0,0,0.5);
+  --shadow-lg:0 20px 56px rgba(0,0,0,0.6);
+  --shadow-gold:0 8px 32px rgba(200,152,42,0.18);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:'Tajawal',sans-serif;background:var(--dark);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh}
+img{display:block;max-width:100%;height:auto}
+ul{list-style:none}
+button{cursor:pointer;border:none;font-family:inherit}
+a{text-decoration:none;color:inherit}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ─── TOP BAR ─── */
+.top-bar{background:linear-gradient(90deg,#080810 0%,#100f1c 40%,#100f1c 60%,#080810 100%);padding:9px 0;border-bottom:1px solid rgba(124,58,237,0.2);position:relative;overflow:hidden}
+.top-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(124,58,237,0.06) 40%,rgba(159,95,253,0.06) 60%,transparent 100%);animation:topBarGlow 5s ease-in-out infinite}
+@keyframes topBarGlow{0%,100%{opacity:.4}50%{opacity:1}}
+.top-bar-inner{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;position:relative}
+.top-bar-badge{background:linear-gradient(135deg,var(--ai-purple),var(--ai-purple2));color:#fff;padding:2px 10px;border-radius:var(--radius-full);font-size:0.7rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 14px rgba(124,58,237,0.5);animation:pulseBadge 2.5s ease-in-out infinite}
+@keyframes pulseBadge{0%,100%{box-shadow:0 0 14px rgba(124,58,237,0.5)}50%{box-shadow:0 0 24px rgba(159,95,253,0.75)}}
+.top-bar-text{color:rgba(220,218,235,0.88);font-size:0.87rem;font-weight:500}
+.top-bar-text strong{color:#c4b5fd;font-weight:700}
+.top-bar-btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--ai-purple),var(--ai-purple2));color:#fff;padding:5px 16px;border-radius:var(--radius-full);font-size:0.82rem;font-weight:800;transition:var(--transition);box-shadow:0 4px 18px rgba(124,58,237,0.35);white-space:nowrap;border:1px solid rgba(255,255,255,0.12)}
+.top-bar-btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(124,58,237,0.55);background:linear-gradient(135deg,#6d28d9,var(--ai-purple2))}
+.top-bar-btn svg{width:14px;height:14px;fill:currentColor}
+
+/* ─── HEADER ─── */
+header{background:rgba(11,11,15,0.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;transition:border-color .3s}
+.header-content{display:flex;justify-content:space-between;align-items:center;padding:13px 0}
+.logo{display:flex;align-items:center;gap:11px;font-size:1.25rem;font-weight:800;color:var(--text)}
+.logo-icon{width:38px;height:38px;flex-shrink:0}
+.logo-icon svg{width:38px;height:38px}
+.logo-text span{color:var(--gold-light)}
+nav ul{display:flex;align-items:center;gap:1px}
+nav ul li a{padding:7px 11px;border-radius:var(--radius-full);font-size:0.855rem;font-weight:600;color:var(--text-muted);transition:var(--transition);white-space:nowrap;display:flex;align-items:center;gap:5px}
+nav ul li a:hover,nav ul li a.active{background:var(--surface2);color:var(--text)}
+.nav-ai-btn{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(159,95,253,0.12)) !important;color:#c4b5fd !important;border:1px solid rgba(124,58,237,0.3) !important;padding:7px 14px !important;font-weight:700 !important}
+.nav-ai-btn:hover{background:linear-gradient(135deg,rgba(124,58,237,0.35),rgba(159,95,253,0.25)) !important;color:#e0d9ff !important;border-color:rgba(159,95,253,0.5) !important;box-shadow:0 0 18px rgba(124,58,237,0.25) !important}
+.nav-ai-btn .ai-dot{width:7px;height:7px;background:#a78bfa;border-radius:50%;animation:aiDotPulse 1.8s ease-in-out infinite;box-shadow:0 0 5px #a78bfa}
+@keyframes aiDotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(0.7)}}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border-radius:var(--radius-xs);background:var(--surface);border:1px solid var(--border)}
+.hamburger span{width:22px;height:2px;background:var(--text-muted);border-radius:2px;transition:var(--transition)}
+
+/* ─── HERO ─── */
+.hero{text-align:center;padding:56px 0 40px;position:relative}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(200,152,42,0.07) 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,152,42,0.08);color:var(--gold);padding:6px 18px;border-radius:var(--radius-full);font-size:0.8rem;font-weight:700;margin-bottom:20px;border:1px solid var(--border3);letter-spacing:.3px}
+.hero h1{font-size:clamp(1.85rem,3.8vw,3rem);font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.15;letter-spacing:-.4px}
+.hero h1 span{color:var(--gold-light)}
+.hero p{color:var(--text-muted);font-size:clamp(0.97rem,1.8vw,1.08rem);max-width:500px;margin:0 auto 36px;font-weight:400;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.hero-stat{background:var(--dark3);border:1px solid var(--border);border-radius:var(--radius);padding:16px 22px;min-width:108px;transition:var(--transition);cursor:default;position:relative;overflow:hidden}
+.hero-stat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,152,42,0.04),transparent);opacity:0;transition:var(--transition)}
+.hero-stat:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:var(--shadow-gold)}
+.hero-stat:hover::before{opacity:1}
+.hero-stat-number{font-size:1.6rem;font-weight:900;color:var(--gold-light)}
+.hero-stat-label{font-size:0.77rem;color:var(--text-muted);margin-top:2px;font-weight:500}
+
+/* ─── SECTION HEADS ─── */
+.section-head{text-align:center;margin-bottom:38px}
+.section-title{font-size:clamp(1.45rem,2.8vw,1.9rem);font-weight:800;color:var(--text);margin-bottom:10px;position:relative;display:inline-block}
+.section-title::after{content:'';position:absolute;bottom:-10px;right:50%;transform:translateX(50%);width:44px;height:3px;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:2px}
+.section-subtitle{color:var(--text-muted);font-size:0.94rem;margin-top:20px;font-weight:400}
+
+/* ─── AI SECTION ─── */
+.ai-section{padding:52px 0 40px;position:relative;overflow:hidden}
+.ai-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,0.5),rgba(159,95,253,0.5),transparent)}
+.ai-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,152,42,0.2),transparent)}
+.ai-section-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(124,58,237,0.06) 0%,transparent 70%);pointer-events:none}
+.ai-card{background:linear-gradient(135deg,rgba(124,58,237,0.08) 0%,rgba(11,11,15,0) 50%,rgba(200,152,42,0.04) 100%);border:1px solid rgba(124,58,237,0.22);border-radius:24px;padding:44px 52px;display:flex;align-items:center;gap:48px;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(124,58,237,0.08),inset 0 1px 0 rgba(255,255,255,0.05)}
+.ai-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(124,58,237,0.15) 0%,transparent 65%);pointer-events:none}
+.ai-card::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(200,152,42,0.08) 0%,transparent 65%);pointer-events:none}
+.ai-card-visual{flex-shrink:0;width:100px;height:100px;position:relative;display:flex;align-items:center;justify-content:center}
+.ai-orb{width:100px;height:100px;background:linear-gradient(135deg,var(--ai-purple),var(--ai-purple2),var(--ai-blue));border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 12px rgba(124,58,237,0.1),0 0 40px rgba(124,58,237,0.35);animation:orbFloat 5s ease-in-out infinite;position:relative}
+.ai-orb::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(159,95,253,0.3);animation:orbRing 3s linear infinite}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.03)}}
+@keyframes orbRing{0%{opacity:0.8;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+.ai-orb svg{width:48px;height:48px;fill:#fff;filter:drop-shadow(0 0 8px rgba(255,255,255,0.4))}
+.ai-card-content{flex:1;min-width:0}
+.ai-label{display:inline-flex;align-items:center;gap:7px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);color:#c4b5fd;padding:4px 14px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.ai-label-dot{width:6px;height:6px;background:#a78bfa;border-radius:50%;animation:aiDotPulse 1.8s ease-in-out infinite}
+.ai-card-title{font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:900;color:var(--text);margin-bottom:10px;line-height:1.2}
+.ai-card-title span{background:linear-gradient(135deg,var(--ai-purple2),#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ai-card-desc{color:var(--text-muted);font-size:0.95rem;margin-bottom:22px;line-height:1.7;max-width:480px}
+.ai-features-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.ai-feature-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);color:#d8b4fe;padding:5px 13px;border-radius:var(--radius-full);font-size:0.78rem;font-weight:600}
+.ai-feature-chip i{font-size:0.75rem;color:#a78bfa}
+.ai-cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ai-main-btn{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--ai-purple),var(--ai-purple2));color:#fff;padding:13px 28px;border-radius:var(--radius-full);font-size:0.95rem;font-weight:800;transition:var(--transition);box-shadow:0 6px 24px rgba(124,58,237,0.4);border:none;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
+.ai-main-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.12),transparent);opacity:0;transition:var(--transition)}
+.ai-main-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(124,58,237,0.55)}
+.ai-main-btn:hover::before{opacity:1}
+.ai-main-btn svg{width:20px;height:20px;fill:currentColor}
+.ai-secondary-note{color:var(--text-faint);font-size:0.82rem;font-weight:500;display:flex;align-items:center;gap:6px}
+.ai-secondary-note i{color:#a78bfa}
+
+/* ─── COURSES SECTION ─── */
+.courses-section{padding:16px 0 76px}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:22px}
+
+/* ─── CARD ─── */
+.course-card{background:var(--dark3);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition);position:relative;display:flex;flex-direction:column;border:1px solid var(--border)}
+.course-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-md);border-color:var(--border2)}
+.course-image{height:164px;background-size:cover;background-position:center top;position:relative;flex-shrink:0}
+.course-card.is-book .course-image{height:204px;background-position:center}
+.course-image::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,15,0.65) 0%,transparent 55%)}
+.course-content{padding:20px;flex-grow:1;display:flex;flex-direction:column}
+.course-title{font-size:1.03rem;font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.35}
+.course-description{color:var(--text-muted);font-size:0.845rem;flex-grow:1;margin-bottom:14px;line-height:1.6;font-weight:400}
+.course-price{font-size:1.28rem;font-weight:800;color:var(--gold-light);margin-bottom:10px}
+.course-price .currency{font-size:0.77rem;font-weight:600;color:var(--text-muted);margin-right:3px}
+.course-features{margin-bottom:16px}
+.course-features li{font-size:0.81rem;color:var(--text-muted);padding:4px 0;padding-right:20px;position:relative;line-height:1.4}
+.course-features li::before{content:'✓';position:absolute;right:0;color:var(--gold);font-weight:700}
+.course-btn{display:block;width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:11px;border-radius:var(--radius-sm);font-size:0.91rem;font-weight:700;text-align:center;transition:var(--transition);box-shadow:0 4px 16px rgba(224,92,42,.18);margin-top:auto;border:none;cursor:pointer}
+.course-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,92,42,.35)}
+
+/* ─── BADGES ─── */
+.badge-book{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#166534,#16a34a);color:#fff;padding:4px 11px;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;z-index:2}
+.badge-new{position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#991b1b,#dc2626);color:#fff;padding:4px 10px;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;z-index:2}
+.shipping-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(200,152,42,0.1);border:1px solid var(--border3);color:var(--gold);padding:4px 10px;border-radius:var(--radius-full);font-size:0.74rem;font-weight:600;margin-bottom:10px}
+
+/* ─── DIVIDER ─── */
+.books-divider-row{grid-column:1/-1}
+.section-divider{display:flex;align-items:center;gap:16px;margin:24px 0 10px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-divider-label{font-size:0.97rem;font-weight:700;color:var(--gold-light);white-space:nowrap;letter-spacing:.2px}
+
+/* ─── DETAIL PAGE ─── */
+.course-detail{display:none;padding:34px 0 60px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-weight:600;font-size:0.88rem;margin-bottom:32px;padding:9px 18px;border-radius:var(--radius-full);background:var(--surface);border:1px solid var(--border);transition:var(--transition);cursor:pointer}
+.back-btn:hover{color:var(--gold);border-color:var(--border2);background:var(--surface2)}
+.detail-content{display:flex;align-items:center;justify-content:space-between;gap:52px;flex-wrap:wrap}
+.detail-text{flex:1;min-width:300px}
+.detail-title{font-size:clamp(1.55rem,3.2vw,2.1rem);font-weight:900;color:var(--text);margin-bottom:14px;line-height:1.2;letter-spacing:-.3px}
+.detail-description{color:var(--text-muted);font-size:0.98rem;margin-bottom:24px;line-height:1.75;max-width:520px;font-weight:400}
+.detail-price{font-size:1.95rem;font-weight:900;color:var(--gold-light);margin-bottom:24px;display:inline-block}
+.detail-price .currency{font-size:1rem;color:var(--text-muted);font-weight:600;margin-right:6px}
+.detail-features{margin-bottom:28px}
+.detail-features li{padding:10px 0;padding-right:32px;position:relative;font-size:0.95rem;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.detail-features li:last-child{border-bottom:none}
+.detail-features li::before{content:'✓';position:absolute;right:0;color:var(--gold);font-weight:800;font-size:1rem}
+.cta-button{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:14px 34px;border-radius:var(--radius-full);font-size:0.97rem;font-weight:800;transition:var(--transition);box-shadow:0 8px 28px rgba(224,92,42,.25);border:none;cursor:pointer}
+.cta-button:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(224,92,42,.4)}
+.shipping-note{margin-top:14px;color:var(--text-faint);font-size:0.86rem;display:flex;align-items:center;gap:6px;font-weight:500}
+.shipping-note i{color:var(--gold)}
+
+/* ─── 3D BOOK ─── */
+.book-container{flex:0 0 auto;width:300px;perspective:1400px;height:420px;display:flex;justify-content:center;align-items:center;position:relative}
+.book-3d{width:230px;height:310px;position:relative;transform-style:preserve-3d;transform:rotateY(-18deg) rotateX(8deg);animation:bookFloat 7s ease-in-out infinite;cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.book-3d:hover{transform:rotateY(-5deg) rotateX(3deg) scale(1.04)}
+@keyframes bookFloat{0%,100%{transform:rotateY(-18deg) rotateX(8deg) translateY(0)}50%{transform:rotateY(-12deg) rotateX(4deg) translateY(-14px)}}
+.book-cover{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;border-radius:4px 6px 6px 4px;box-shadow:6px 0 24px rgba(0,0,0,.5),inset 4px 0 8px rgba(255,255,255,.08);transform:translateZ(16px);backface-visibility:hidden;border:1px solid rgba(255,255,255,.1);overflow:hidden}
+.book-spine{position:absolute;width:32px;height:100%;background:linear-gradient(to right,#3a2010,#5c3a1a,#3a2010);transform:rotateY(90deg) translateZ(-16px);border-radius:3px 0 0 3px;box-shadow:inset -4px 0 8px rgba(0,0,0,.7)}
+.book-pages{position:absolute;width:97%;height:97%;background:#ede8df;transform:translateZ(-14px);border-radius:3px}
+.book-shadow{position:absolute;width:280px;height:24px;background:radial-gradient(ellipse at center,rgba(0,0,0,.35) 0%,transparent 70%);border-radius:50%;bottom:-36px;filter:blur(5px);animation:shadowAnim 7s ease-in-out infinite}
+@keyframes shadowAnim{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(.88);opacity:.3}}
+
+/* ─── MODAL ─── */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;justify-content:center;align-items:center;backdrop-filter:blur(10px);padding:20px}
+.modal-content{background:var(--dark2);padding:40px;border-radius:22px;width:100%;max-width:440px;box-shadow:var(--shadow-lg);position:relative;animation:modalIn .35s cubic-bezier(.16,1,.3,1);border:1px solid var(--border)}
+@keyframes modalIn{from{opacity:0;transform:translateY(-28px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.close-modal{position:absolute;top:14px;left:14px;font-size:1.2rem;cursor:pointer;color:var(--text-muted);width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);background:none;border:none}
+.close-modal:hover{background:var(--surface2);color:var(--text)}
+.modal-title{font-size:1.4rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:26px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:0.85rem;font-weight:700;color:var(--text-muted);margin-bottom:7px}
+.form-group input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.93rem;font-family:inherit;background:var(--surface);color:var(--text);transition:var(--transition)}
+.form-group input:focus{border-color:rgba(124,58,237,0.5);outline:none;box-shadow:0 0 0 3px rgba(124,58,237,0.1);background:var(--surface2)}
+.form-group input::placeholder{color:var(--text-faint)}
+.submit-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:var(--radius-sm);font-size:1rem;font-weight:800;font-family:inherit;cursor:pointer;transition:var(--transition);margin-top:8px;box-shadow:0 6px 20px rgba(224,92,42,.2)}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(224,92,42,.35)}
+.shipping-info{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:14px;color:var(--text-faint);font-size:0.83rem;font-weight:500}
+.shipping-info i{color:var(--gold)}
+
+/* ─── SUCCESS ─── */
+.success-message{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1001;justify-content:center;align-items:center;backdrop-filter:blur(10px);padding:20px}
+.success-content{background:var(--dark2);padding:48px 40px;border-radius:22px;width:100%;max-width:420px;text-align:center;box-shadow:var(--shadow-lg);animation:modalIn .35s cubic-bezier(.16,1,.3,1);border:1px solid var(--border)}
+.success-icon{font-size:3rem;color:#4ade80;margin-bottom:16px}
+.success-title{font-size:1.55rem;font-weight:800;color:var(--text);margin-bottom:10px}
+.success-text{color:var(--text-muted);font-size:0.95rem;margin-bottom:26px;line-height:1.6}
+.success-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 32px;border-radius:var(--radius-full);font-size:1rem;font-weight:700;border:none;cursor:pointer;transition:var(--transition);font-family:inherit}
+.success-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(224,92,42,.35)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark2);border-top:1px solid var(--border);padding:26px 0;margin-top:40px}
+.footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.copyright{color:var(--text-faint);font-size:0.83rem;font-weight:400}
+.social-links{display:flex;gap:10px}
+.social-links a{width:38px;height:38px;background:var(--surface);color:var(--text-muted);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:var(--transition);border:1px solid var(--border)}
+.social-links a:hover{background:rgba(200,152,42,0.15);color:var(--gold);border-color:var(--border2);transform:translateY(-2px)}
+
+/* ─── SCROLL REVEAL ─── */
+.fade-in{opacity:1}
+@supports(animation-timeline:scroll()){
+  .fade-in{opacity:0;animation:revealFade linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+  @keyframes revealFade{to{opacity:1}}
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  nav{display:none}
+  nav.open{display:block;position:absolute;top:100%;right:0;left:0;background:var(--dark2);border-bottom:1px solid var(--border);padding:12px 24px 20px;z-index:99}
+  nav.open ul{flex-direction:column;gap:3px}
+  nav.open ul li a{display:flex;padding:10px 14px}
+  .hamburger{display:flex}
+  .header-content{position:relative}
+}
+@media(max-width:860px){
+  .ai-card{flex-direction:column;text-align:center;padding:34px 28px;gap:28px}
+  .ai-card-desc{margin:0 auto 22px}
+  .ai-features-row{justify-content:center}
+  .ai-cta-row{justify-content:center}
+}
+@media(max-width:768px){
+  .hero{padding:38px 0 26px}
+  .detail-content{flex-direction:column-reverse;align-items:center}
+  .detail-text{min-width:auto;width:100%}
+  .book-container{width:100%;height:340px}
+  .book-3d{transform:rotateY(-15deg) rotateX(5deg) scale(.88)}
+  .modal-content{padding:28px 20px}
+  .success-content{padding:36px 22px}
+  .footer-content{flex-direction:column;text-align:center}
+  .courses-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+  .top-bar-text{font-size:0.8rem}
+}
+@media(max-width:480px){
+  .courses-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.65rem}
+  .hero-stats{gap:10px}
+  .hero-stat{padding:12px 16px;min-width:88px}
+  .ai-card{padding:26px 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-inner">
+      <span class="top-bar-badge">AI</span>
+      <span class="top-bar-text">تحدث مع <strong>أبو البزيز AI</strong> — مستشارك التجاري الذكي على مدار الساعة</span>
+      <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" rel="noopener noreferrer" class="top-bar-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+        جرّب الآن مجاناً
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="أكاديمية أبو البزيز">
+            <rect width="40" height="40" rx="10" fill="url(#lg1)"/>
+            <path d="M20 8L32 14V22C32 27.5 26.8 32.2 20 34C13.2 32.2 8 27.5 8 22V14L20 8Z" fill="none" stroke="#f5c842" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M15 21L18.5 24.5L25 18" stroke="#f5c842" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="lg1" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#1a1820"/><stop offset="1" stop-color="#0e0e14"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="logo-text">أكاديمية <span>أبو البزيز</span></div>
+      </div>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#" class="nav-link active" data-target="home">الرئيسية</a></li>
+          <li><a href="#" class="nav-link" data-target="finance">المالية</a></li>
+          <li><a href="#" class="nav-link" data-target="marketing">التسويق</a></li>
+          <li><a href="#" class="nav-link" data-target="content">المحتوى</a></li>
+          <li><a href="#" class="nav-link" data-target="stocks">الأسهم</a></li>
+          <li><a href="#" class="nav-link" data-target="realestate">العقارات</a></li>
+          <li><a href="#" class="nav-link" data-target="books">الكتب</a></li>
+          <li>
+            <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" rel="noopener noreferrer" class="nav-link nav-ai-btn">
+              <span class="ai-dot"></span> أبو البزيز AI
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Home -->
+<section class="courses-section" id="home">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-eyebrow"><i class="fas fa-star"></i> أكاديمية متخصصة في التجارة وريادة الأعمال</div>
+      <h1>أكاديمية <span>أبو البزيز</span> التعليمية</h1>
+      <p>أول أكاديمية رقمية مختصة في قطاعات التجارة وريادة الأعمال والاستثمار، نقدم لك المعرفة والأدوات اللازمة لتحقيق النجاح.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-number">+500</div><div class="hero-stat-label">طالب ناجح</div></div>
+        <div class="hero-stat"><div class="hero-stat-number">8</div><div class="hero-stat-label">منتج تعليمي</div></div>
+        <div class="hero-stat"><div class="hero-stat-number">5★</div><div class="hero-stat-label">تقييم الطلاب</div></div>
+      </div>
+    </div>
+
+    <!-- AI Section -->
+    <div class="ai-section">
+      <div class="ai-section-bg"></div>
+      <div class="container" style="position:relative;z-index:1">
+        <div class="ai-card fade-in">
+          <div class="ai-card-visual">
+            <div class="ai-orb">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+            </div>
+          </div>
+          <div class="ai-card-content">
+            <div class="ai-label"><span class="ai-label-dot"></span> ذكاء اصطناعي متخصص</div>
+            <h2 class="ai-card-title">مستشارك التجاري الذكي — <span>أبو البزيز AI</span></h2>
+            <p class="ai-card-desc">اسأله عن أي شيء يخص التجارة، التسويق، الاستثمار، أو ريادة الأعمال. مدرّب على خبرات أبو البزيز ويرد عليك فوراً بأسلوب عراقي واقعي.</p>
+            <div class="ai-features-row">
+              <span class="ai-feature-chip"><i class="fas fa-comments"></i> ردود فورية</span>
+              <span class="ai-feature-chip"><i class="fas fa-brain"></i> مدرّب على خبرة حقيقية</span>
+              <span class="ai-feature-chip"><i class="fas fa-clock"></i> متاح 24/7</span>
+              <span class="ai-feature-chip"><i class="fas fa-lock-open"></i> مجاني تماماً</span>
+            </div>
+            <div class="ai-cta-row">
+              <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" rel="noopener noreferrer" class="ai-main-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>
+                ابدأ المحادثة الآن
+              </a>
+              <span class="ai-secondary-note"><i class="fas fa-check-circle"></i> لا يحتاج تسجيل — مجاني 100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:52px">
+      <h2 class="section-title">الكورسات المتاحة</h2>
+      <p class="section-subtitle">تعلّم من الخبراء وطوّر مهاراتك في عالم الأعمال</p>
+    </div>
+    <div class="courses-grid">
+
+      <!-- الهندسة المالية -->
+      <div class="course-card fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/PGfSjNpX/IMG-6228.webp')"></div>
+        <div class="course-content">
+          <h3 class="course-title">كورس الهندسة المالية الإدارية</h3>
+          <p class="course-description">تعلم أساسيات الهندسة المالية واستراتيجيات إدارة المخاطر المالية والاستثمار.</p>
+          <div class="course-price">500,000 <span class="currency">IQD</span></div>
+          <ul class="course-features">
+            <li>تصبح مدير مالي محترف</li>
+            <li>فهم لغة المدراء</li>
+            <li>بناء نظام مالي من الصفر</li>
+            <li>شهادة معتمدة</li>
+          </ul>
+          <button class="course-btn view-course" data-course="finance">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- التسويق -->
+      <div class="course-card fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/KzXqRWn0/IMG-6229.webp')"></div>
+        <div class="course-content">
+          <h3 class="course-title">كورس التسويق المتقدم</h3>
+          <p class="course-description">جاهز تصير المسوّق اللي يخلي السوق ينقلب لصالحك؟ هذا الكورس للناس اللي تريد تفهم اللعبة مثل ما هي.</p>
+          <div class="course-price">250,000 <span class="currency">IQD</span></div>
+          <ul class="course-features">
+            <li>فهم عقلية الزبون العراقي</li>
+            <li>تفكيك المنافس واستراتيجيات QASIF</li>
+            <li>بناء منتج ذو قيمة حقيقية</li>
+            <li>شهادة معتمدة</li>
+          </ul>
+          <button class="course-btn view-course" data-course="marketing">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- صناعة المحتوى -->
+      <div class="course-card fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/5XNfPKKJ/IMG-6230.jpg')"></div>
+        <div class="course-content">
+          <h3 class="course-title">كورس صناعة المحتوى المتقدم</h3>
+          <p class="course-description">تعلم كيفية إنشاء محتوى جذاب وفعال يساعد في بناء علامتك التجارية وجذب العملاء.</p>
+          <div class="course-price">450,000 <span class="currency">IQD</span></div>
+          <ul class="course-features">
+            <li>استراتيجيات المحتوى الفعال</li>
+            <li>كتابة محتوى جذاب ومؤثر</li>
+            <li>تصميم المحتوى المرئي</li>
+            <li>شهادة معتمدة</li>
+          </ul>
+          <button class="course-btn view-course" data-course="content">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- سوق الأوراق المالية -->
+      <div class="course-card fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/PsjRKWNr/IMG-6233.png')"></div>
+        <div class="course-content">
+          <h3 class="course-title">كورس سوق الأوراق المالية</h3>
+          <p class="course-description">تعلم أساسيات التداول في الأسواق المالية وتحليل الأسهم والاستثمار.</p>
+          <div class="course-price">200,000 <span class="currency">IQD</span></div>
+          <ul class="course-features">
+            <li>أساسيات التداول المتقدم</li>
+            <li>تحليل الأسهم والاستثمار</li>
+            <li>استراتيجيات التداول الناجحة</li>
+            <li>شهادة معتمدة</li>
+          </ul>
+          <button class="course-btn view-course" data-course="stocks">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- العقارات -->
+      <div class="course-card fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/zVsCXGL2/IMG-6232.jpg')"></div>
+        <div class="course-content">
+          <h3 class="course-title">كورس الوساطة العقارية</h3>
+          <p class="course-description">تريد تصير الوسيط العقاري اللي يثقون بيه الناس؟ هذا الكورس يعلمك من البداية للنهاية.</p>
+          <div class="course-price">1,000,000 <span class="currency">IQD</span></div>
+          <ul class="course-features">
+            <li>الإطار القانوني للعقار العراقي</li>
+            <li>تقدير سعر العقار (التثمين)</li>
+            <li>التسويق العقاري الميداني</li>
+            <li>شهادة معتمدة</li>
+          </ul>
+          <button class="course-btn view-course" data-course="realestate">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="books-divider-row">
+        <div class="section-divider">
+          <span class="section-divider-label">📚 الكتب المتاحة</span>
+        </div>
+      </div>
+
+      <!-- كتاب التسويق العراقي -->
+      <div class="course-card is-book fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/C3wZjgxV/IMG-6226.jpg')"></div>
+        <span class="badge-book">📖 كتاب</span>
+        <div class="course-content">
+          <h3 class="course-title">التسويق العراقي الحديث</h3>
+          <p class="course-description">اكتشف أسرار تسويق المنتجات بنجاح مع هذا الدليل الشامل.</p>
+          <div class="course-price">30,000 <span class="currency">IQD</span></div>
+          <div class="shipping-badge"><i class="fas fa-truck"></i> يشمل أجور التوصيل</div>
+          <ul class="course-features">
+            <li>استراتيجيات تسويق مبتكرة</li>
+            <li>نصائح عملية قابلة للتطبيق</li>
+            <li>أسرار نجاح من تجارب حقيقية</li>
+            <li>دعم مستمر بعد الشراء</li>
+          </ul>
+          <button class="course-btn view-course" data-course="marketing-book">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- كتاب عقلية الزبون -->
+      <div class="course-card is-book fade-in">
+        <div class="course-image" style="background-image:url('https://i.ibb.co/5N7tqJ6/IMG-6235.jpg')"></div>
+        <span class="badge-book">📖 كتاب</span>
+        <div class="course-content">
+          <h3 class="course-title">كتاب عقلية الزبون</h3>
+          <p class="course-description">فهم عقلية الزبون وكيفية التأثير في قرارات الشراء.</p>
+          <div class="course-price">50,000 <span class="currency">IQD</span></div>
+          <div class="shipping-badge"><i class="fas fa-truck"></i> يشمل أجور التوصيل</div>
+          <ul class="course-features">
+            <li>فهم سلوك المستهلك</li>
+            <li>استراتيجيات التأثير</li>
+            <li>نصائح عملية للتسويق</li>
+            <li>دعم مستمر بعد الشراء</li>
+          </ul>
+          <button class="course-btn view-course" data-course="mindset-book">عرض التفاصيل</button>
+        </div>
+      </div>
+
+      <!-- كتاب فلسفة المبيعات -->
+      <div class="course-card is-book fade-in">
+        <div class="course-image" style="background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20280%20380%22%3E%3Crect%20width%3D%22280%22%20height%3D%22380%22%20fill%3D%22%230d1b2a%22%20rx%3D%226%22/%3E%3Crect%20x%3D%228%22%20y%3D%228%22%20width%3D%22264%22%20height%3D%22364%22%20fill%3D%22none%22%20stroke%3D%22%23c8982a%22%20stroke-width%3D%221.5%22%20rx%3D%224%22%20opacity%3D%22.7%22/%3E%3Ctext%20x%3D%22140%22%20y%3D%22200%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%20fill%3D%22%23f5c842%22%20font-weight%3D%22bold%22%3E%D9%81%D9%84%D8%B3%D9%81%D8%A9%3C/text%3E%3Ctext%20x%3D%22140%22%20y%3D%22230%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%22%20font-size%3D%2218%22%20fill%3D%22%23c8982a%22%3E%D8%A7%D9%84%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA%3C/text%3E%3C/svg%3E')"></div>
+        <span class="badge-book">📖 كتاب</span>
+        <span class="badge-new">جديد</span>
+        <div class="course-content">
+          <h3 class="course-title">فلسفة المبيعات والتفاوض</h3>
+          <p class="course-description">أتقن فن البيع والتفاوض وتعلّم كيف تُغلق أي صفقة بثقة واحترافية تامة.</p>
+          <div class="course-price">35,000 <span class="currency">IQD</span></div>
+          <div class="shipping-badge"><i class="fas fa-truck"></i> يشمل أجور التوصيل</div>
+          <ul class="course-features">
+            <li>أسرار إغلاق الصفقات</li>
+            <li>فن التفاوض على السعر</li>
+            <li>إدارة اعتراضات الزبون</li>
+            <li>توصيل لجميع المحافظات</li>
+          </ul>
+          <button class="course-btn view-course" data-course="sales-book">عرض التفاصيل</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Detail: الهندسة المالية -->
+<section class="course-detail" id="finance-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كورس الهندسة المالية الإدارية</h2>
+        <p class="detail-description">كورس متكامل يقدم لك أساسيات الهندسة المالية واستراتيجيات إدارة المخاطر المالية والاستثمار. ستتعلم كيفية تحليل الأسواق المالية واتخاذ القرارات الاستثمارية الصحيحة.</p>
+        <div class="detail-price">500,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>تصبح مدير مالي محترف</li>
+          <li>فهم لغة المدراء والقيادة المالية</li>
+          <li>بناء نظام مالي من الصفر</li>
+          <li>استراتيجيات إدارة المخاطر المالية</li>
+          <li>تحليل الأسواق المالية</li>
+          <li>شهادة معتمدة</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="finance"><i class="fas fa-graduation-cap"></i> اشترك الآن</button>
+        <div class="shipping-note"><i class="fas fa-bolt"></i> وصول فوري بعد التأكيد</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/PGfSjNpX/IMG-6228.webp')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: التسويق -->
+<section class="course-detail" id="marketing-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كورس التسويق المتقدم</h2>
+        <p class="detail-description">جاهز تصير المسوّق اللي يخلي السوق ينقلب لصالحك؟ هذا الكورس للناس اللي تريد تفهم اللعبة مثل ما هي… مو مثل ما ينطوها بالدورات الوردية. راح تفهم السوق العراقي "على حقيقته"… بدون فلتر.</p>
+        <div class="detail-price">250,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>فهم عقلية الزبون العراقي</li>
+          <li>تفكيك المنافس واستراتيجيات QASIF</li>
+          <li>بناء منتج ذو قيمة حقيقية</li>
+          <li>استراتيجيات التسعير والتموضع</li>
+          <li>بناء قنوات توزيع فعالة</li>
+          <li>شهادة معتمدة</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="marketing"><i class="fas fa-graduation-cap"></i> اشترك الآن</button>
+        <div class="shipping-note"><i class="fas fa-bolt"></i> وصول فوري بعد التأكيد</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/KzXqRWn0/IMG-6229.webp')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: المحتوى -->
+<section class="course-detail" id="content-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كورس صناعة المحتوى المتقدم</h2>
+        <p class="detail-description">تعلم كيفية إنشاء محتوى جذاب وفعال يساعد في بناء علامتك التجارية وجذب العملاء. اكتشف استراتيجيات المحتوى الناجحة وأسرار إنشاء محتوى يلهم ويؤثر.</p>
+        <div class="detail-price">450,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>استراتيجيات المحتوى الفعال</li>
+          <li>كتابة محتوى جذاب ومؤثر</li>
+          <li>تصميم المحتوى المرئي</li>
+          <li>إدارة حسابات التواصل الاجتماعي</li>
+          <li>قياس أداء المحتوى وتحسينه</li>
+          <li>شهادة معتمدة</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="content"><i class="fas fa-graduation-cap"></i> اشترك الآن</button>
+        <div class="shipping-note"><i class="fas fa-bolt"></i> وصول فوري بعد التأكيد</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/5XNfPKKJ/IMG-6230.jpg')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: الأسهم -->
+<section class="course-detail" id="stocks-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كورس سوق الأوراق المالية</h2>
+        <p class="detail-description">تعلم أساسيات التداول في الأسواق المالية وتحليل الأسهم والاستثمار. اكتشف استراتيجيات التداول الناجحة وكيفية تحقيق الأرباح من الأسواق المالية.</p>
+        <div class="detail-price">200,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>أساسيات التداول المتقدم</li>
+          <li>تحليل الأسهم والاستثمار</li>
+          <li>استراتيجيات التداول الناجحة</li>
+          <li>التحليل الفني والأساسي</li>
+          <li>إدارة المحفظة الاستثمارية</li>
+          <li>شهادة معتمدة</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="stocks"><i class="fas fa-graduation-cap"></i> اشترك الآن</button>
+        <div class="shipping-note"><i class="fas fa-bolt"></i> وصول فوري بعد التأكيد</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/PsjRKWNr/IMG-6233.png')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: العقارات -->
+<section class="course-detail" id="realestate-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كورس الوساطة العقارية الاحترافية</h2>
+        <p class="detail-description">تريد تصير الوسيط العقاري اللي يثقون بيه الناس… مو السمسار العشوائي؟ كورس "الوساطة العقارية الاحترافية في العراق" يعلمك من البداية للنهاية شلون تشتغل شغل نظيف، قانوني، محترف.</p>
+        <div class="detail-price">1,000,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>الإطار القانوني للعقار العراقي</li>
+          <li>تقدير سعر العقار (التثمين)</li>
+          <li>التسويق العقاري الميداني</li>
+          <li>بناء شبكة علاقات مهنية</li>
+          <li>إتمام الصفقات بصورة قانونية</li>
+          <li>شهادة معتمدة</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="realestate"><i class="fas fa-graduation-cap"></i> اشترك الآن</button>
+        <div class="shipping-note"><i class="fas fa-bolt"></i> وصول فوري بعد التأكيد</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/zVsCXGL2/IMG-6232.jpg')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: كتاب التسويق العراقي -->
+<section class="course-detail" id="marketing-book-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">التسويق العراقي الحديث</h2>
+        <p class="detail-description">اكتشف أسرار تسويق المنتجات بنجاح مع هذا الدليل الشامل الذي يضع بين يديك كل ما تحتاجه لتحويل أفكارك إلى مشاريع ناجحة. هذا الكتاب هو دليلك الشامل لفهم السوق العراقي.</p>
+        <div class="detail-price">30,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>استراتيجيات تسويق مبتكرة</li>
+          <li>نصائح عملية قابلة للتطبيق</li>
+          <li>أسرار نجاح من تجارب حقيقية</li>
+          <li>فهم السوق العراقي</li>
+          <li>بناء العلامات التجارية</li>
+          <li>دعم مستمر بعد الشراء</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="marketing-book"><i class="fas fa-shopping-cart"></i> شراء الكتاب الآن</button>
+        <div class="shipping-note"><i class="fas fa-truck"></i> توصيل مجاني لجميع المحافظات</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/C3wZjgxV/IMG-6226.jpg')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: كتاب عقلية الزبون -->
+<section class="course-detail" id="mindset-book-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">كتاب عقلية الزبون</h2>
+        <p class="detail-description">فهم عقلية الزبون وكيفية التأثير في قرارات الشراء. هذا الكتاب يقدم لك رؤى عميقة حول كيفية تفكير العملاء وما الذي يحفزهم على الشراء، مما يمكنك من تطوير استراتيجيات تسويقية أكثر فعالية.</p>
+        <div class="detail-price">50,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>فهم سلوك المستهلك</li>
+          <li>استراتيجيات التأثير في قرارات الشراء</li>
+          <li>تطوير استراتيجيات تسويقية فعالة</li>
+          <li>رؤى عميقة من علم النفس التسويقي</li>
+          <li>نصائح عملية قابلة للتطبيق</li>
+          <li>دعم مستمر بعد الشراء</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="mindset-book"><i class="fas fa-shopping-cart"></i> شراء الكتاب الآن</button>
+        <div class="shipping-note"><i class="fas fa-truck"></i> توصيل مجاني لجميع المحافظات</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background-image:url('https://i.ibb.co/5N7tqJ6/IMG-6235.jpg')"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Detail: كتاب فلسفة المبيعات -->
+<section class="course-detail" id="sales-book-detail">
+  <div class="container">
+    <button class="back-btn" data-target="home"><i class="fas fa-arrow-right"></i> العودة إلى الكورسات</button>
+    <div class="detail-content">
+      <div class="detail-text">
+        <h2 class="detail-title">فلسفة المبيعات والتفاوض</h2>
+        <p class="detail-description">أتقن فن البيع والتفاوض مع هذا الكتاب المتخصص الذي يكشف لك أسرار إغلاق الصفقات بثقة واحترافية. تعلّم كيف تقرأ الزبون، تدير الاعتراضات، وتحوّل "لا" إلى "نعم" في كل موقف بيعي.</p>
+        <div class="detail-price">35,000 <span class="currency">IQD</span></div>
+        <ul class="detail-features">
+          <li>فلسفة البيع الحديثة وكيف تغيّر طريقة تفكيرك</li>
+          <li>أسرار إغلاق الصفقات وتقنيات الإقناع المتقدمة</li>
+          <li>فن التفاوض على السعر والشروط بثقة</li>
+          <li>كيف تقرأ لغة جسد الزبون</li>
+          <li>إدارة الاعتراضات وتحويلها إلى فرص بيع</li>
+          <li>توصيل لجميع محافظات العراق</li>
+        </ul>
+        <button class="cta-button open-modal" data-modal="sales-book"><i class="fas fa-shopping-cart"></i> شراء الكتاب الآن</button>
+        <div class="shipping-note"><i class="fas fa-truck"></i> السعر يشمل أجور التوصيل لجميع المحافظات</div>
+      </div>
+      <div class="book-container">
+        <div class="book-3d">
+          <div class="book-cover" style="background:linear-gradient(135deg,#0d1b2a,#1b2838)"></div>
+          <div class="book-spine"></div>
+          <div class="book-pages"></div>
+        </div>
+        <div class="book-shadow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="purchaseModal">
+  <div class="modal-content">
+    <button class="close-modal" aria-label="إغلاق">✕</button>
+    <h3 class="modal-title" id="modalTitle">اشترك الآن</h3>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="name">الاسم الكامل</label>
+        <input type="text" id="name" placeholder="أدخل اسمك الكامل" required>
+      </div>
+      <div class="form-group">
+        <label for="province">المحافظة</label>
+        <input type="text" id="province" placeholder="مثال: بغداد" required>
+      </div>
+      <div class="form-group">
+        <label for="area">المنطقة / الحي</label>
+        <input type="text" id="area" placeholder="مثال: الكرادة" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" placeholder="07X XXXX XXXX" required>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">تأكيد الطلب والدفع عند الاستلام</button>
+      <div class="shipping-info"><i class="fas fa-shield-alt"></i> <span id="shippingText">التوصيل مجاني لجميع المحافظات</span></div>
+    </form>
+  </div>
+</div>
+
+<!-- Success -->
+<div class="success-message" id="successMessage">
+  <div class="success-content">
+    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+    <h3 class="success-title">تم الطلب بنجاح! 🎉</h3>
+    <p class="success-text">شكراً لك! تم إرسال طلبك وسيتواصل معك فريقنا قريباً لتأكيد التفاصيل.</p>
+    <button class="success-btn" id="successBtn">حسناً، شكراً!</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <p class="copyright">© 2025 أكاديمية أبو البزيز — جميع الحقوق محفوظة</p>
+      <div class="social-links">
+        <a href="#" aria-label="تيليغرام"><i class="fab fa-telegram"></i></a>
+        <a href="#" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const courses={finance:{title:"كورس الهندسة المالية الإدارية",price:"500,000",isBook:false},marketing:{title:"كورس التسويق المتقدم",price:"250,000",isBook:false},content:{title:"كورس صناعة المحتوى المتقدم",price:"450,000",isBook:false},stocks:{title:"كورس سوق الأوراق المالية",price:"200,000",isBook:false},realestate:{title:"كورس الوساطة العقارية",price:"1,000,000",isBook:false},"marketing-book":{title:"التسويق العراقي الحديث",price:"30,000",isBook:true},"mindset-book":{title:"كتاب عقلية الزبون",price:"50,000",isBook:true},"sales-book":{title:"فلسفة المبيعات والتفاوض",price:"35,000",isBook:true}};
+
+const ham=document.getElementById('hamburger'),nav=document.getElementById('mainNav');
+ham.addEventListener('click',()=>{nav.classList.toggle('open')});
+
+function showSection(target){
+  document.getElementById('home').style.display='none';
+  document.querySelectorAll('.course-detail').forEach(s=>s.style.display='none');
+  if(target==='home'||target==='books'){
+    document.getElementById('home').style.display='block';
+    if(target==='books'){
+      setTimeout(()=>{
+        const d=document.querySelector('.section-divider');
+        if(d)d.scrollIntoView({behavior:'smooth',block:'start'});
+      },100);
+    }
+  } else {
+    const el=document.getElementById(target+'-detail');
+    if(el)el.style.display='block';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+  nav.classList.remove('open');
+}
+
+document.querySelectorAll('.nav-link').forEach(l=>{
+  l.addEventListener('click',function(e){
+    if(this.getAttribute('href')==='#'){
+      e.preventDefault();
+      document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
+      this.classList.add('active');
+      showSection(this.dataset.target);
+    }
+  });
+});
+
+document.querySelectorAll('.view-course').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const c=this.dataset.course;
+    document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
+    const t=c.includes('book')?'books':c;
+    const nl=document.querySelector(`[data-target="${t}"]`);
+    if(nl)nl.classList.add('active');
+    showSection(c);
+  });
+});
+
+document.querySelectorAll('.back-btn').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
+    const hl=document.querySelector('[data-target="home"]');
+    if(hl)hl.classList.add('active');
+    showSection('home');
+  });
+});
+
+const modal=document.getElementById('purchaseModal');
+const successMsg=document.getElementById('successMessage');
+let currentCourse='';
+
+document.querySelectorAll('.open-modal').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    currentCourse=this.dataset.modal;
+    const c=courses[currentCourse];
+    const isBook=c&&c.isBook;
+    document.getElementById('modalTitle').textContent=isBook?`اطلب ${c.title}`:`اشترك في ${c.title}`;
+    document.getElementById('shippingText').textContent=isBook?'التوصيل مجاني لجميع المحافظات':'الوصول الفوري بعد الدفع';
+    modal.style.display='flex';
+  });
+});
+
+document.querySelector('.close-modal').addEventListener('click',()=>modal.style.display='none');
+document.getElementById('successBtn').addEventListener('click',()=>successMsg.style.display='none');
+window.addEventListener('click',e=>{
+  if(e.target===modal)modal.style.display='none';
+  if(e.target===successMsg)successMsg.style.display='none';
+});
+
+document.getElementById('orderForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const c=courses[currentCourse];
+  const isBook=c&&c.isBook;
+  const name=document.getElementById('name').value;
+  const province=document.getElementById('province').value;
+  const area=document.getElementById('area').value;
+  const phone=document.getElementById('phone').value;
+  let msg=`طلب جديد ${isBook?'لشراء':'للاشتراك في'} ${c.title}:\n\n`;
+  msg+=`الاسم: ${name}\nالمحافظة: ${province}\nالمنطقة: ${area}\nرقم الهاتف: ${phone}\n\nالسعر: ${c.price} IQD`;
+  if(currentCourse==='sales-book')msg+=' (يشمل أجور التوصيل)';
+  const botToken='8.577344981e+09:AAH2XQtxMD25pJ4DMJNDVcDX5LW_Ea43zUs';
+  const chatIds=['1.160431494e+09','5.911440873e+09'];
+  const url=`https://api.telegram.org/bot${botToken}/sendMessage`;
+  Promise.all(chatIds.map(chatId=>fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:chatId,text:msg})}))).then(()=>{
+    modal.style.display='none';
+    this.reset();
+    successMsg.style.display='flex';
+  }).catch(()=>{
+    modal.style.display='none';
+    this.reset();
+    successMsg.style.display='flex';
+  });
+});
+</script>
+</body>
+</html>

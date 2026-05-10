@@ -3,756 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أكاديمية أبو البزيز | Business & Entrepreneurship Academy</title>
-<meta name="description" content="أول أكاديمية رقمية عراقية متخصصة في التجارة وريادة الأعمال والاستثمار">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<title>أكاديمية أبو البزيز</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*,::before,::after{box-sizing:border-box;margin:0;padding:0}
-:root{
---g1:#e6b450;--g2:#ffd787;--g3:#8b6914;
---em:#10b981;--em2:#34d399;
---bg:#0a0a0f;--bg1:#0f0f17;--bg2:#13131d;--bg3:#1a1a26;
---t:#fafafa;--t2:#a0a0b0;--t3:#606072;
---line:rgba(255,255,255,.06);--line2:rgba(230,180,80,.2);
---glass:rgba(255,255,255,.03);
---px:#8b5cf6;--pk:#ec4899;--bl:#3b82f6;
---rd:#ef4444;
---r:20px;--rs:12px;
---ease:cubic-bezier(.22,1,.36,1);
-}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{font-family:'IBM Plex Sans Arabic','Cairo',system-ui,sans-serif;background:var(--bg);color:var(--t);line-height:1.7;overflow-x:hidden;min-height:100vh}
-img{display:block;max-width:100%;height:auto}
-ul{list-style:none}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;font-family:inherit;background:none;color:inherit}
-.ctr{max-width:1200px;margin:0 auto;padding:0 24px}
-
-/* ─── BG EFFECTS ─── */
-.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bg-fx::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(230,180,80,.08),transparent 70%);filter:blur(40px)}
-.bg-fx::after{content:'';position:absolute;bottom:-300px;left:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);filter:blur(50px)}
-.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 70%)}
-
-/* ─── NAV ─── */
-.announce{position:relative;z-index:101;background:linear-gradient(90deg,rgba(139,92,246,.1),rgba(230,180,80,.08),rgba(139,92,246,.1));border-bottom:1px solid var(--line);padding:8px 0;font-size:.8rem;overflow:hidden}
-.announce-inner{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--t2);flex-wrap:wrap}
-.announce-dot{width:6px;height:6px;background:var(--em2);border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 8px var(--em2)}50%{opacity:.4}}
-.announce strong{color:var(--t);font-weight:600}
-.announce a{color:var(--g2);font-weight:600;border-bottom:1px dashed rgba(230,180,80,.4);padding-bottom:1px;transition:.3s}
-.announce a:hover{color:var(--g1);border-color:var(--g1)}
-
-nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.7);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--line);transition:all .4s var(--ease)}
-nav.scrolled{background:rgba(10,10,15,.92);border-bottom-color:var(--line2)}
-.nav-i{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.05rem}
-.brand-mark{width:40px;height:40px;border-radius:11px;background:conic-gradient(from 45deg,var(--g1),var(--g2),var(--g1),var(--g3),var(--g1));display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 20px rgba(230,180,80,.25),inset 0 1px 0 rgba(255,255,255,.2)}
-.brand-mark::before{content:'';position:absolute;inset:2px;background:var(--bg1);border-radius:9px}
-.brand-mark svg{position:relative;z-index:1;width:20px;height:20px}
-.brand-txt{display:flex;flex-direction:column;line-height:1.1}
-.brand-txt small{font-size:.65rem;color:var(--t3);font-weight:500;letter-spacing:1px;text-transform:uppercase}
-.brand-txt span{font-weight:700;font-size:1.02rem}
-.brand-txt span b{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
-
-.nav-links{display:flex;align-items:center;gap:2px;background:var(--glass);padding:4px;border-radius:99px;border:1px solid var(--line)}
-.nav-links a{padding:8px 14px;border-radius:99px;font-size:.84rem;font-weight:500;color:var(--t2);transition:all .3s var(--ease)}
-.nav-links a:hover{color:var(--t)}
-.nav-links a.on{color:var(--t);background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-
-.nav-right{display:flex;align-items:center;gap:10px}
-.btn-ghost{padding:8px 14px;border-radius:99px;font-size:.82rem;font-weight:500;color:var(--t2);transition:.3s;border:1px solid transparent}
-.btn-ghost:hover{color:var(--t);background:var(--glass);border-color:var(--line)}
-.nav-ai{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:99px;font-size:.82rem;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--px),var(--pk));transition:.3s;box-shadow:0 4px 16px rgba(139,92,246,.3)}
-.nav-ai:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(139,92,246,.4)}
-.nav-ai::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 2s infinite}
-
-.ham{display:none;width:38px;height:38px;border-radius:10px;background:var(--glass);border:1px solid var(--line);align-items:center;justify-content:center;color:var(--t);font-size:1.1rem}
-
-@media(max-width:900px){
-.nav-links{display:none}
-.ham{display:flex}
-.mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:80%;max-width:320px;background:var(--bg1);border-left:1px solid var(--line);z-index:200;padding:24px;overflow-y:auto}
-.mobile-menu.open{display:block;animation:slideIn .3s var(--ease)}
-@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
-.mobile-menu a{display:block;padding:14px 16px;border-radius:12px;font-weight:500;color:var(--t2);margin-bottom:4px;transition:.3s}
-.mobile-menu a:hover,.mobile-menu a.on{background:var(--glass);color:var(--t)}
-.mobile-menu .mm-close{display:flex;justify-content:flex-end;margin-bottom:16px}
-.mobile-menu .mm-close button{width:36px;height:36px;border-radius:50%;background:var(--glass);color:var(--t);font-size:1.1rem}
-.mobile-menu .nav-ai{justify-content:center;margin-top:12px}
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);z-index:199}
-.overlay.on{display:block}
-}
-
-/* ─── HERO ─── */
-.hero{position:relative;z-index:1;padding:80px 0 60px;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;background:var(--glass);border:1px solid var(--line);border-radius:99px;font-size:.78rem;color:var(--t2);margin-bottom:28px;transition:.3s}
-.hero-badge:hover{border-color:var(--line2);color:var(--t)}
-.hero-badge .chip{padding:2px 10px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;font-weight:700;font-size:.7rem;border-radius:99px}
-.hero-badge i{font-size:.7rem;color:var(--g2)}
-.hero h1{font-family:'Cairo',sans-serif;font-size:clamp(2.2rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:20px;letter-spacing:-.02em}
-.hero h1 .grad{background:linear-gradient(135deg,var(--g2) 0%,var(--g1) 45%,#ff9b50 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;position:relative}
-.hero h1 .grad::after{content:'';position:absolute;bottom:-4px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,var(--g1),transparent);border-radius:2px;opacity:.7}
-.hero-sub{color:var(--t2);font-size:clamp(1rem,2vw,1.15rem);max-width:600px;margin:0 auto 40px;font-weight:400;line-height:1.75}
-.hero-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:60px}
-.btn-pri{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;font-weight:700;font-size:.93rem;border-radius:99px;transition:all .3s var(--ease);box-shadow:0 8px 28px rgba(230,180,80,.3),inset 0 1px 0 rgba(255,255,255,.2);position:relative;overflow:hidden}
-.btn-pri::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--g2),var(--g1));opacity:0;transition:.3s}
-.btn-pri>*{position:relative;z-index:1}
-.btn-pri:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(230,180,80,.4)}
-.btn-pri:hover::before{opacity:1}
-.btn-sec{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--glass);border:1px solid var(--line);color:var(--t);font-weight:600;font-size:.9rem;border-radius:99px;transition:.3s;backdrop-filter:blur(10px)}
-.btn-sec:hover{background:rgba(255,255,255,.06);border-color:var(--line2);transform:translateY(-2px)}
-
-.hero-trust{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px;padding:0 20px}
-.trust-item{display:flex;align-items:center;gap:8px;color:var(--t3);font-size:.78rem}
-.trust-item i{color:var(--em2);font-size:.85rem}
-.trust-item b{color:var(--t2);font-weight:600}
-
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:680px;margin:0 auto;position:relative}
-.stat-card{padding:24px 20px;background:linear-gradient(180deg,var(--glass),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;text-align:center;position:relative;overflow:hidden;transition:.3s}
-.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line2),transparent)}
-.stat-card:hover{border-color:var(--line2);transform:translateY(-3px)}
-.stat-n{font-family:'Cairo',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;background:linear-gradient(135deg,var(--g2),var(--g1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-.stat-l{font-size:.78rem;color:var(--t3);margin-top:8px;font-weight:500}
-@media(max-width:500px){.hero-stats{grid-template-columns:1fr 1fr}.hero-stats .stat-card:last-child{grid-column:span 2}}
-
-/* ─── AI SHOWCASE ─── */
-.ai-showcase{position:relative;z-index:1;padding:60px 0}
-.ai-wrap{position:relative;background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(236,72,153,.04) 50%,rgba(230,180,80,.06));border:1px solid rgba(139,92,246,.15);border-radius:32px;padding:50px;overflow:hidden;backdrop-filter:blur(10px)}
-.ai-wrap::before{content:'';position:absolute;top:-150px;right:-150px;width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,.2),transparent 65%);filter:blur(40px);animation:pulse1 6s ease-in-out infinite}
-.ai-wrap::after{content:'';position:absolute;bottom:-100px;left:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(236,72,153,.12),transparent 65%);filter:blur(40px);animation:pulse1 8s ease-in-out infinite reverse}
-@keyframes pulse1{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-.ai-inner{position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
-.ai-visual{position:relative;width:140px;height:140px;flex-shrink:0}
-.ai-orb{position:absolute;inset:0;background:conic-gradient(from 0deg,var(--px),var(--pk),var(--bl),var(--px));border-radius:50%;animation:spin 8s linear infinite;filter:blur(1px)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.ai-orb::after{content:'';position:absolute;inset:4px;background:var(--bg1);border-radius:50%}
-.ai-core{position:absolute;inset:14px;background:linear-gradient(135deg,var(--px) 0%,var(--pk) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 40px rgba(255,255,255,.2),0 0 60px rgba(139,92,246,.4)}
-.ai-core i{font-size:2.5rem;color:#fff;filter:drop-shadow(0 0 12px rgba(255,255,255,.5))}
-.ai-ring{position:absolute;inset:-12px;border:1px dashed rgba(255,255,255,.15);border-radius:50%;animation:spin 20s linear infinite reverse}
-.ai-ring::before{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;background:var(--g2);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 12px var(--g1)}
-
-.ai-content .tag{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:#c4b5fd;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px}
-.ai-content .tag i{font-size:.65rem}
-.ai-content h2{font-family:'Cairo',sans-serif;font-size:clamp(1.4rem,3.2vw,2rem);font-weight:900;margin-bottom:12px;letter-spacing:-.01em}
-.ai-content h2 em{font-style:normal;background:linear-gradient(135deg,#c4b5fd,#f0abfc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.ai-content p{color:var(--t2);font-size:.95rem;margin-bottom:22px;max-width:540px;line-height:1.75}
-.ai-feats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-.ai-feat{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--t2);border-radius:99px;font-size:.78rem;font-weight:500}
-.ai-feat i{color:var(--px);font-size:.72rem}
-.btn-ai-cta{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:#fff;color:#0a0a0f;font-weight:700;font-size:.9rem;border-radius:99px;transition:.3s;box-shadow:0 8px 28px rgba(255,255,255,.15)}
-.btn-ai-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,255,255,.2);background:var(--g2)}
-
-@media(max-width:800px){
-.ai-wrap{padding:36px 24px;border-radius:24px}
-.ai-inner{grid-template-columns:1fr;text-align:center;gap:28px}
-.ai-visual{margin:0 auto}
-.ai-content p{margin-right:auto;margin-left:auto}
-.ai-feats{justify-content:center}
-}
-
-/* ─── CATEGORIES PILLS ─── */
-.cat-bar{position:relative;z-index:1;padding:32px 0}
-.cat-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:6px;background:var(--glass);border:1px solid var(--line);border-radius:99px;max-width:fit-content;margin:0 auto;backdrop-filter:blur(10px)}
-.cat-pill{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;background:transparent;color:var(--t2);font-size:.84rem;font-weight:500;border-radius:99px;transition:all .3s var(--ease);cursor:pointer;white-space:nowrap}
-.cat-pill:hover{color:var(--t);background:rgba(255,255,255,.04)}
-.cat-pill.on{background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;font-weight:700;box-shadow:0 4px 16px rgba(230,180,80,.25)}
-.cat-pill i{font-size:.78rem}
-
-/* ─── SECTION ─── */
-.sec{position:relative;z-index:1;padding:40px 0 80px}
-.sec-head{text-align:center;margin-bottom:44px;max-width:620px;margin-right:auto;margin-left:auto}
-.sec-kicker{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(230,180,80,.08);border:1px solid rgba(230,180,80,.2);color:var(--g2);border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-.sec-kicker i{font-size:.65rem}
-.sec h2{font-family:'Cairo',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:12px;letter-spacing:-.01em;line-height:1.2}
-.sec h2 span{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sec-head p{color:var(--t2);font-size:.96rem;line-height:1.7}
-
-/* ─── CARDS ─── */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#0c0c1d;--dark2:#141428;--dark3:#1c1c36;--gold:#f0b90b;--gold2:#fcd535;--cyan:#00d4aa;--blue:#667eea;--purple:#764ba2;--w:#ffffff;--t1:#f5f5f7;--t2:#a1a1b5;--t3:#6b6b80;--r:14px;--glass:rgba(255,255,255,.04)}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--t1);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;font-family:inherit;background:none}ul{list-style:none}
+.c{max-width:1100px;margin:0 auto;padding:0 20px}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;backdrop-filter:blur(20px);background:rgba(12,12,29,.8);border-bottom:1px solid rgba(255,255,255,.05);padding:14px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.1rem;font-weight:900;display:flex;align-items:center;gap:10px}
+.logo i{color:var(--gold);font-size:1.3rem}
+.logo b{color:var(--gold)}
+.nav-r{display:flex;align-items:center;gap:8px}
+.nav-r a{padding:8px 16px;border-radius:99px;font-size:.82rem;font-weight:600;color:var(--t2);transition:.3s}
+.nav-r a:hover{color:var(--t1);background:rgba(255,255,255,.05)}
+.nav-r .ai-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;padding:8px 18px}
+.nav-r .ai-btn:hover{opacity:.9;transform:scale(1.02)}
+.ham{display:none;color:var(--t2);font-size:1.2rem;padding:8px}
+@media(max-width:768px){.nav-r{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(12,12,29,.97);flex-direction:column;padding:16px;border-bottom:1px solid rgba(255,255,255,.05)}.nav-r.open{display:flex}.ham{display:block}}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;text-align:center;padding:120px 20px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(240,185,11,.08),transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-300px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(102,126,234,.06),transparent 60%);pointer-events:none}
+.hero-c{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(240,185,11,.1);border:1px solid rgba(240,185,11,.2);border-radius:99px;font-size:.75rem;font-weight:700;color:var(--gold2);margin-bottom:24px}
+.pill i{font-size:.65rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:18px}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--t2);font-size:1.05rem;max-width:540px;margin:0 auto 32px}
+.hero-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn1{padding:14px 32px;background:linear-gradient(135deg,var(--gold),#d4a00a);color:var(--dark);font-weight:800;font-size:.92rem;border-radius:99px;transition:.3s;box-shadow:0 8px 32px rgba(240,185,11,.25)}
+.btn1:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(240,185,11,.35)}
+.btn2{padding:14px 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--t1);font-weight:600;font-size:.92rem;border-radius:99px;transition:.3s}
+.btn2:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:500px;margin:0 auto}
+.st{padding:20px;background:var(--glass);border:1px solid rgba(255,255,255,.06);border-radius:16px;text-align:center}
+.st-n{font-size:1.8rem;font-weight:900;color:var(--gold)}
+.st-l{font-size:.75rem;color:var(--t3);margin-top:4px}
+/* AI */
+.ai-sec{padding:60px 0}
+.ai-card{background:linear-gradient(135deg,rgba(102,126,234,.08),rgba(118,75,162,.05));border:1px solid rgba(102,126,234,.15);border-radius:24px;padding:40px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.ai-icon{width:90px;height:90px;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;box-shadow:0 0 50px rgba(102,126,234,.3);animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.ai-txt h2{font-size:1.5rem;font-weight:900;margin-bottom:8px}
+.ai-txt h2 em{font-style:normal;color:var(--gold2)}
+.ai-txt p{color:var(--t2);font-size:.9rem;margin-bottom:16px;max-width:440px}
+.ai-go{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-weight:700;font-size:.88rem;border-radius:99px;transition:.3s;box-shadow:0 6px 20px rgba(102,126,234,.3)}
+.ai-go:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(102,126,234,.4)}
+@media(max-width:700px){.ai-card{grid-template-columns:1fr;text-align:center;gap:20px}.ai-icon{margin:0 auto}}
+/* GRID */
+.sec{padding:60px 0}
+.sec-h{text-align:center;margin-bottom:40px}
+.sec-h h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;margin-bottom:8px}
+.sec-h h2 em{font-style:normal;color:var(--gold)}
+.sec-h p{color:var(--t2);font-size:.92rem}
+.tabs{display:flex;justify-content:center;gap:6px;margin-bottom:32px;flex-wrap:wrap}
+.tab{padding:8px 20px;border-radius:99px;font-size:.82rem;font-weight:600;color:var(--t2);background:var(--glass);border:1px solid rgba(255,255,255,.06);transition:.3s}
+.tab:hover{color:var(--t1);background:rgba(255,255,255,.06)}
+.tab.on{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:800}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.card{position:relative;background:linear-gradient(180deg,var(--bg2),var(--bg1));border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease)}
-.card::before{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--line2),transparent);opacity:0;transition:.4s}
-.card:hover{transform:translateY(-6px);border-color:var(--line2);box-shadow:0 24px 60px -12px rgba(0,0,0,.6),0 0 0 1px rgba(230,180,80,.08)}
-.card:hover::before{opacity:1}
-.card-media{height:200px;position:relative;overflow:hidden;background:var(--bg3)}
-.card-media .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s var(--ease)}
-.card:hover .card-media .img{transform:scale(1.08)}
-.card-media::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg2) 0%,transparent 50%)}
-.card.bk .card-media{height:240px}
-
-.card-badges{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;z-index:3;pointer-events:none}
-.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:99px;font-size:.7rem;font-weight:700;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:auto}
-.b-type{background:rgba(16,185,129,.2);color:var(--em2);border:1px solid rgba(16,185,129,.3)}
-.b-new{background:rgba(239,68,68,.2);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
-.b-hot{background:rgba(230,180,80,.2);color:var(--g2);border:1px solid rgba(230,180,80,.3)}
-.b-type i,.b-new i,.b-hot i{font-size:.65rem}
-
-.card-body{padding:22px;display:flex;flex-direction:column;flex:1}
-.card-cat{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--g2);font-weight:600;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
-.card-cat i{font-size:.65rem}
-.card-title{font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:800;color:var(--t);margin-bottom:8px;line-height:1.35;letter-spacing:-.01em}
-.card-desc{font-size:.85rem;color:var(--t2);line-height:1.65;margin-bottom:16px;flex:1}
-
-.card-meta{display:flex;align-items:center;gap:14px;padding-top:14px;border-top:1px solid var(--line);margin-bottom:14px}
-.card-meta .mi{display:flex;align-items:center;gap:5px;font-size:.76rem;color:var(--t3)}
-.card-meta .mi i{color:var(--g2);font-size:.72rem}
-
-.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}
-.price{display:flex;align-items:baseline;gap:4px}
-.price .amount{font-family:'Cairo',sans-serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--g2),var(--g1));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.price .curr{font-size:.72rem;color:var(--t3);font-weight:600}
-.card-action{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;background:var(--glass);border:1px solid var(--line);color:var(--t);font-size:.82rem;font-weight:600;border-radius:99px;transition:.3s}
-.card-action:hover{background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;border-color:transparent;transform:translateX(-3px)}
-.card-action i{font-size:.72rem;transition:.3s}
-.card-action:hover i{transform:translateX(-3px)}
-
-.section-break{grid-column:1/-1;margin:20px 0 10px;display:flex;align-items:center;gap:20px}
-.section-break .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line2),transparent)}
-.section-break .label{display:inline-flex;align-items:center;gap:10px;padding:9px 20px;background:var(--glass);border:1px solid var(--line);border-radius:99px;font-size:.84rem;font-weight:700;color:var(--g2)}
-.section-break .label i{color:var(--g1)}
-
-/* ─── DETAIL PAGE ─── */
-.detail{display:none;position:relative;z-index:1;padding:40px 0 80px}
-.detail-back{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--glass);border:1px solid var(--line);color:var(--t2);font-size:.85rem;font-weight:600;border-radius:99px;transition:.3s;margin-bottom:32px}
-.detail-back:hover{color:var(--g2);border-color:var(--line2);transform:translateX(4px)}
-.detail-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
-
-.detail-visual{position:relative;min-height:420px;display:flex;align-items:center;justify-content:center}
-.detail-visual::before{content:'';position:absolute;width:80%;height:80%;background:radial-gradient(circle,rgba(230,180,80,.1),transparent 60%);filter:blur(40px);z-index:0}
-.book-3d{position:relative;width:260px;height:360px;perspective:1500px;z-index:1}
-.book-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(6deg);animation:bookF 8s ease-in-out infinite;transition:transform .6s var(--ease)}
-.book-inner:hover{animation-play-state:paused;transform:rotateY(-10deg) rotateX(3deg) scale(1.04)}
-@keyframes bookF{0%,100%{transform:rotateY(-24deg) rotateX(6deg) translateY(0)}50%{transform:rotateY(-18deg) rotateX(3deg) translateY(-12px)}}
-.bk-cover{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:3px 6px 6px 3px;box-shadow:6px 0 20px rgba(0,0,0,.5),inset 4px 0 8px rgba(255,255,255,.08);transform:translateZ(18px);border:1px solid rgba(255,255,255,.05)}
-.bk-spine{position:absolute;width:36px;height:100%;background:linear-gradient(to right,#2a1608,#4a2a10,#2a1608);transform:rotateY(90deg) translateZ(-18px);border-radius:3px 0 0 3px;box-shadow:inset -3px 0 8px rgba(0,0,0,.7)}
-.bk-pages{position:absolute;width:97%;height:97%;top:1.5%;right:1.5%;background:linear-gradient(to right,#d4c9b0 0%,#ede5d3 5%,#ede5d3 95%,#d4c9b0 100%);transform:translateZ(-15px);border-radius:2px}
-.bk-back{position:absolute;inset:0;background:linear-gradient(135deg,#2a1608,#1a0e04);border-radius:3px 6px 6px 3px;transform:translateZ(-18px)}
-.bk-shadow{position:absolute;width:80%;height:24px;bottom:-40px;left:10%;background:radial-gradient(ellipse at center,rgba(0,0,0,.4),transparent 65%);border-radius:50%;filter:blur(6px);animation:shadowF 8s ease-in-out infinite}
-@keyframes shadowF{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(.85);opacity:.35}}
-
-.detail-content h1{font-family:'Cairo',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;margin-bottom:16px;letter-spacing:-.02em;line-height:1.15}
-.detail-cat{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;background:rgba(230,180,80,.1);border:1px solid rgba(230,180,80,.2);color:var(--g2);border-radius:99px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:16px}
-.detail-desc{color:var(--t2);font-size:1rem;margin-bottom:28px;line-height:1.8}
-.detail-price{display:flex;align-items:baseline;gap:6px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
-.detail-price .amount{font-family:'Cairo',sans-serif;font-size:2.4rem;font-weight:900;background:linear-gradient(135deg,var(--g2),var(--g1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-.detail-price .curr{font-size:1rem;color:var(--t2);font-weight:700}
-.detail-price .note{font-size:.8rem;color:var(--t3);margin-inline-start:auto;display:flex;align-items:center;gap:5px}
-.detail-price .note i{color:var(--em2)}
-
-.detail-feats h4{font-size:.85rem;font-weight:700;color:var(--t2);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:8px}
-.detail-feats h4 i{color:var(--g1)}
-.detail-feats ul{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-bottom:32px}
-.detail-feats li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--t);line-height:1.55}
-.detail-feats li i{flex-shrink:0;width:22px;height:22px;background:rgba(16,185,129,.15);color:var(--em2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;margin-top:3px;border:1px solid rgba(16,185,129,.25)}
-
-.detail-cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.detail-cta-row .note{color:var(--t3);font-size:.82rem;display:flex;align-items:center;gap:6px}
-.detail-cta-row .note i{color:var(--em2)}
-
-@media(max-width:900px){
-.detail-grid{grid-template-columns:1fr;gap:40px}
-.detail-visual{order:-1;min-height:360px}
-.book-3d{width:200px;height:280px}
-.detail-feats ul{grid-template-columns:1fr}
-}
-
-/* ─── MODAL ─── */
-.modal{display:none;position:fixed;inset:0;background:rgba(5,5,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:500;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s var(--ease)}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-box{position:relative;width:100%;max-width:460px;background:linear-gradient(180deg,var(--bg2),var(--bg1));border:1px solid var(--line);border-radius:24px;padding:44px 36px 32px;animation:slideUp .4s var(--ease);box-shadow:0 40px 80px rgba(0,0,0,.6)}
-@keyframes slideUp{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
-.modal-close{position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:50%;background:var(--glass);border:1px solid var(--line);color:var(--t2);font-size:1.05rem;display:flex;align-items:center;justify-content:center;transition:.3s}
-.modal-close:hover{background:rgba(255,255,255,.06);color:var(--t);transform:rotate(90deg)}
-.modal-icon{width:52px;height:52px;margin:0 auto 16px;background:linear-gradient(135deg,var(--g1),var(--g3));border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(230,180,80,.3)}
-.modal-icon i{font-size:1.3rem;color:#1a1205}
-.modal-box h3{font-family:'Cairo',sans-serif;font-size:1.25rem;font-weight:800;text-align:center;margin-bottom:6px}
-.modal-box .sub{text-align:center;color:var(--t3);font-size:.85rem;margin-bottom:24px}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:.78rem;font-weight:600;color:var(--t2);margin-bottom:6px}
-.field input{width:100%;padding:13px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;color:var(--t);font-size:.9rem;font-family:inherit;transition:.3s}
-.field input:focus{outline:none;border-color:rgba(230,180,80,.4);background:rgba(255,255,255,.04);box-shadow:0 0 0 3px rgba(230,180,80,.1)}
-.field input::placeholder{color:var(--t3)}
-.submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;font-weight:800;font-size:.95rem;border-radius:12px;margin-top:8px;transition:.3s;box-shadow:0 8px 24px rgba(230,180,80,.3)}
-.submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(230,180,80,.4)}
-.modal-foot{text-align:center;color:var(--t3);font-size:.78rem;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px}
-.modal-foot i{color:var(--em2)}
-
-/* ─── SUCCESS ─── */
-.success{display:none;position:fixed;inset:0;background:rgba(5,5,10,.9);backdrop-filter:blur(14px);z-index:600;align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s var(--ease)}
-.success-box{background:linear-gradient(180deg,var(--bg2),var(--bg1));border:1px solid rgba(16,185,129,.3);border-radius:24px;padding:44px 36px;max-width:400px;text-align:center;animation:slideUp .4s var(--ease)}
-.success-box .check{width:72px;height:72px;margin:0 auto 16px;background:rgba(16,185,129,.15);border:2px solid var(--em2);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:bounce .5s var(--ease)}
-@keyframes bounce{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
-.success-box .check i{font-size:2rem;color:var(--em2)}
-.success-box h3{font-family:'Cairo',sans-serif;font-size:1.4rem;font-weight:900;margin-bottom:10px}
-.success-box p{color:var(--t2);font-size:.92rem;margin-bottom:24px;line-height:1.7}
-.success-btn{padding:12px 30px;background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;font-weight:700;border-radius:99px;font-size:.9rem;transition:.3s}
-.success-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,180,80,.3)}
-
-/* ─── FOOTER ─── */
-footer{position:relative;z-index:1;margin-top:80px;border-top:1px solid var(--line);background:rgba(10,10,15,.5);padding:48px 0 28px}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:32px}
-.ft-brand .brand{margin-bottom:14px}
-.ft-brand p{color:var(--t2);font-size:.88rem;line-height:1.7;max-width:320px}
-.ft-col h5{font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:16px;color:var(--t)}
-.ft-col ul li{margin-bottom:8px}
-.ft-col ul li a{color:var(--t2);font-size:.86rem;transition:.3s;display:inline-block}
-.ft-col ul li a:hover{color:var(--g2);transform:translateX(-3px)}
-.ft-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:24px;border-top:1px solid var(--line);gap:16px;flex-wrap:wrap}
-.ft-bottom p{color:var(--t3);font-size:.8rem}
-.social{display:flex;gap:10px}
-.social a{width:38px;height:38px;border-radius:10px;background:var(--glass);border:1px solid var(--line);color:var(--t2);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:.3s}
-.social a:hover{background:linear-gradient(135deg,var(--g1),var(--g3));color:#1a1205;border-color:transparent;transform:translateY(-3px)}
-@media(max-width:768px){.ft-grid{grid-template-columns:1fr;gap:28px}}
-
-/* ─── FLOATING AI BUTTON ─── */
-.fab-ai{position:fixed;bottom:20px;left:20px;z-index:90;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--px),var(--pk));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;box-shadow:0 12px 32px rgba(139,92,246,.4);transition:.3s;animation:fabPulse 3s ease-in-out infinite}
-@keyframes fabPulse{0%,100%{box-shadow:0 12px 32px rgba(139,92,246,.4)}50%{box-shadow:0 16px 40px rgba(139,92,246,.6)}}
-.fab-ai:hover{transform:scale(1.1) rotate(8deg)}
-.fab-ai::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(139,92,246,.3);animation:fabRing 2s ease-out infinite}
-@keyframes fabRing{0%{transform:scale(1);opacity:1}100%{transform:scale(1.4);opacity:0}}
-
-/* ─── SCROLL ANIMATIONS ─── */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.reveal.in{opacity:1;transform:none}
-
-@media(max-width:768px){
-.ctr{padding:0 20px}
-.hero{padding:48px 0 40px}
-.ai-showcase{padding:40px 0}
-.sec{padding:20px 0 60px}
-.grid{grid-template-columns:1fr;gap:16px}
-.hero-trust{gap:14px}
-}
+.card{background:var(--dark2);border:1px solid rgba(255,255,255,.05);border-radius:20px;overflow:hidden;transition:.4s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:rgba(240,185,11,.15);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.card-img{height:180px;position:relative;overflow:hidden}
+.card-img img,.card-img .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-img .bg{background-size:cover;background-position:center}
+.card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--dark2) 0%,transparent 50%)}
+.card.bk .card-img{height:220px}
+.bdg{position:absolute;top:12px;padding:4px 10px;border-radius:99px;font-size:.68rem;font-weight:700;z-index:2;backdrop-filter:blur(8px)}
+.bdg-r{right:12px;background:rgba(0,212,170,.15);color:var(--cyan);border:1px solid rgba(0,212,170,.25)}
+.bdg-l{left:12px;background:rgba(240,185,11,.15);color:var(--gold2);border:1px solid rgba(240,185,11,.25)}
+.card-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.card-body h3{font-size:1rem;font-weight:800;margin-bottom:6px}
+.card-body>p{font-size:.82rem;color:var(--t2);flex:1;margin-bottom:14px;line-height:1.6}
+.pr{font-size:1.4rem;font-weight:900;color:var(--gold);margin-bottom:12px}.pr small{font-size:.7rem;color:var(--t3);font-weight:600}
+.fts li{font-size:.76rem;color:var(--t2);padding:3px 0;padding-right:18px;position:relative}
+.fts li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;right:0;color:var(--cyan);font-size:.6rem}
+.card-go{display:block;width:100%;margin-top:14px;padding:12px;background:linear-gradient(135deg,var(--gold),#d4a00a);color:var(--dark);font-weight:700;font-size:.86rem;border-radius:10px;text-align:center;transition:.3s}
+.card-go:hover{box-shadow:0 6px 20px rgba(240,185,11,.3);transform:translateY(-2px)}
+.brk{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:12px 0}
+.brk::before,.brk::after{content:'';flex:1;height:1px;background:rgba(240,185,11,.12)}
+.brk span{font-size:.85rem;font-weight:700;color:var(--gold2)}
+/* DETAIL */
+.det{display:none;padding:100px 0 60px;position:relative;z-index:1}
+.det-back{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:99px;background:var(--glass);border:1px solid rgba(255,255,255,.06);color:var(--t2);font-size:.84rem;font-weight:600;margin-bottom:28px;transition:.3s}
+.det-back:hover{color:var(--gold);border-color:rgba(240,185,11,.2)}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.det-vis{display:flex;align-items:center;justify-content:center;min-height:380px;position:relative}
+.det-vis::before{content:'';position:absolute;width:60%;height:60%;background:radial-gradient(circle,rgba(240,185,11,.08),transparent 60%);filter:blur(30px)}
+.bk3d{width:220px;height:310px;perspective:1200px;position:relative;z-index:1}
+.bk3d-in{width:100%;height:100%;position:relative;transform-style:preserve-3d;transform:rotateY(-20deg) rotateX(5deg);animation:bf 7s ease-in-out infinite}
+@keyframes bf{0%,100%{transform:rotateY(-20deg) rotateX(5deg)}50%{transform:rotateY(-12deg) rotateX(2deg) translateY(-10px)}}
+.bk3d-cv{position:absolute;inset:0;background-size:cover;background-position:center;border-radius:4px;box-shadow:5px 0 18px rgba(0,0,0,.5);transform:translateZ(14px);border:1px solid rgba(255,255,255,.05)}
+.bk3d-sp{position:absolute;width:30px;height:100%;background:linear-gradient(to right,#2a1608,#4a2a10);transform:rotateY(90deg) translateZ(-14px);border-radius:3px 0 0 3px}
+.det-info h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;margin-bottom:14px;line-height:1.2}
+.det-info>p{color:var(--t2);font-size:.95rem;margin-bottom:20px;line-height:1.8}
+.det-pr{font-size:2rem;font-weight:900;color:var(--gold);margin-bottom:20px}.det-pr small{font-size:.9rem;color:var(--t3)}
+.det-fts{margin-bottom:24px}
+.det-fts li{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:.88rem;color:var(--t2);border-bottom:1px solid rgba(255,255,255,.04)}
+.det-fts li:last-child{border:none}
+.det-fts li i{color:var(--cyan);font-size:.75rem;width:20px;height:20px;background:rgba(0,212,170,.1);border-radius:50%;display:flex;align-items:center;justify-content:center}
+@media(max-width:768px){.det-grid{grid-template-columns:1fr}.det-vis{order:-1;min-height:300px}.bk3d{width:180px;height:250px}}
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal-b{background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:22px;padding:36px;width:100%;max-width:420px;position:relative;animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:scale(.95) translateY(16px)}to{opacity:1;transform:none}}
+.modal-x{position:absolute;top:14px;left:14px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.04);color:var(--t2);display:flex;align-items:center;justify-content:center;transition:.3s}
+.modal-x:hover{background:rgba(255,255,255,.08);color:var(--t1)}
+.modal-b h3{font-size:1.2rem;font-weight:800;text-align:center;margin-bottom:20px}
+.fi{margin-bottom:12px}
+.fi label{display:block;font-size:.78rem;font-weight:600;color:var(--t3);margin-bottom:5px}
+.fi input{width:100%;padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;color:var(--t1);font-size:.88rem;font-family:inherit;transition:.3s}
+.fi input:focus{outline:none;border-color:rgba(240,185,11,.3);box-shadow:0 0 0 3px rgba(240,185,11,.08)}
+.sbmt{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),#d4a00a);color:var(--dark);font-weight:800;font-size:.92rem;border-radius:10px;margin-top:8px;transition:.3s}
+.sbmt:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,185,11,.3)}
+/* SUCCESS */
+.suc{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:2001;align-items:center;justify-content:center;padding:20px}
+.suc-b{background:var(--dark2);border:1px solid rgba(0,212,170,.2);border-radius:22px;padding:40px;max-width:380px;text-align:center;animation:pop .3s ease}
+.suc-b .ico{width:64px;height:64px;margin:0 auto 14px;background:rgba(0,212,170,.1);border:2px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--cyan)}
+.suc-b h3{font-size:1.3rem;font-weight:900;margin-bottom:8px}
+.suc-b p{color:var(--t2);font-size:.9rem;margin-bottom:20px}
+.suc-btn{padding:12px 28px;background:var(--gold);color:var(--dark);font-weight:700;border-radius:99px;font-size:.88rem;transition:.3s}
+/* FOOTER */
+footer{margin-top:60px;border-top:1px solid rgba(255,255,255,.05);padding:28px 0}
+.ft{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.ft p{color:var(--t3);font-size:.78rem}
+.ft-s{display:flex;gap:8px}
+.ft-s a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05);color:var(--t2);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:.3s}
+.ft-s a:hover{color:var(--gold);border-color:rgba(240,185,11,.2);transform:translateY(-2px)}
+@media(max-width:600px){.ft{flex-direction:column;text-align:center}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<div class="bg-fx"></div>
-<div class="grid-bg"></div>
-
-<!-- Announce bar -->
-<div class="announce">
-  <div class="ctr announce-inner">
-    <span class="announce-dot"></span>
-    <span><strong>جديد:</strong> تحدث مع <strong>أبو البزيز AI</strong> — مستشارك التجاري الذكي</span>
-    <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank">جرّبه الآن <i class="fas fa-arrow-left"></i></a>
-  </div>
+<!-- NAV -->
+<nav class="nav"><div class="c nav-in">
+<div class="logo"><i class="fas fa-shield-halved"></i> أكاديمية <b>أبو البزيز</b></div>
+<div class="nav-r" id="navR">
+<a href="#" data-s="home">الرئيسية</a>
+<a href="#" data-s="courses">الكورسات</a>
+<a href="#" data-s="books">الكتب</a>
+<a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="ai-btn"><i class="fas fa-robot"></i> AI مجاني</a>
 </div>
+<button class="ham" id="ham"><i class="fas fa-bars"></i></button>
+</div></nav>
 
-<!-- Navbar -->
-<nav id="nav">
-  <div class="ctr nav-i">
-    <div class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 20 20" fill="none">
-          <path d="M10 3L16 6V10.5C16 13.5 13.5 16 10 17C6.5 16 4 13.5 4 10.5V6L10 3Z" stroke="#e6b450" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M7 10L9 12L13 8" stroke="#e6b450" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="brand-txt">
-        <small>ACADEMY</small>
-        <span>أكاديمية <b>أبو البزيز</b></span>
-      </div>
-    </div>
-
-    <div class="nav-links">
-      <a href="#" data-s="home" class="on">الرئيسية</a>
-      <a href="#" data-s="courses">الكورسات</a>
-      <a href="#" data-s="books">الكتب</a>
-      <a href="#ai">الذكاء الاصطناعي</a>
-    </div>
-
-    <div class="nav-right">
-      <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="nav-ai">أبو البزيز AI</a>
-      <button class="ham" id="ham"><i class="fas fa-bars"></i></button>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile menu -->
-<div class="overlay" id="ovl"></div>
-<div class="mobile-menu" id="mm">
-  <div class="mm-close"><button id="mmClose"><i class="fas fa-times"></i></button></div>
-  <a href="#" data-s="home" class="on">الرئيسية</a>
-  <a href="#" data-s="courses">الكورسات</a>
-  <a href="#" data-s="books">الكتب</a>
-  <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="nav-ai">أبو البزيز AI</a>
-</div>
-
-<!-- HOME PAGE -->
+<!-- HOME -->
 <div id="homePage">
+<section class="hero"><div class="hero-c">
+<div class="pill"><i class="fas fa-fire"></i> الأولى في العراق — تجارة وريادة أعمال</div>
+<h1>اصنع مستقبلك<br>مع <em>أبو البزيز</em></h1>
+<p>كورسات وكتب تجارية بأسلوب عراقي واقعي — من الهندسة المالية إلى التسويق والعقارات. تعلّم من خبرة حقيقية.</p>
+<div class="hero-btns">
+<a href="#" class="btn1" data-s="courses"><i class="fas fa-rocket"></i> ابدأ التعلم</a>
+<a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="btn2"><i class="fas fa-robot"></i> جرّب AI مجاناً</a>
+</div>
+<div class="stats">
+<div class="st"><div class="st-n">+500</div><div class="st-l">طالب ناجح</div></div>
+<div class="st"><div class="st-n">8</div><div class="st-l">منتج تعليمي</div></div>
+<div class="st"><div class="st-n">5★</div><div class="st-l">تقييم الطلاب</div></div>
+</div>
+</div></section>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="ctr">
-      <div class="hero-badge">
-        <span class="chip">PRO</span>
-        <span>أول أكاديمية عراقية متخصصة في التجارة</span>
-        <i class="fas fa-sparkles"></i>
-      </div>
-      <h1>المعرفة التي تُحدث<br><span class="grad">فرقاً حقيقياً</span> في أعمالك</h1>
-      <p class="hero-sub">كورسات وكتب تجارية احترافية بأسلوب عراقي واقعي — من الهندسة المالية إلى التسويق والعقارات والاستثمار. تعلّم من خبراء حقيقيين.</p>
+<!-- AI -->
+<section class="ai-sec"><div class="c">
+<div class="ai-card">
+<div class="ai-icon"><i class="fas fa-brain"></i></div>
+<div class="ai-txt">
+<h2>مستشارك الذكي — <em>أبو البزيز AI</em></h2>
+<p>ذكاء اصطناعي متخصص بالتجارة مدرّب على خبرات حقيقية. اسأله أي سؤال تجاري — مجاني 100% ومتاح دائماً.</p>
+<a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="ai-go"><i class="fas fa-comments"></i> ابدأ محادثة</a>
+</div>
+</div>
+</div></section>
 
-      <div class="hero-cta">
-        <a href="#courses" class="btn-pri" data-s="courses"><i class="fas fa-rocket"></i> ابدأ رحلتك التعليمية</a>
-        <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="btn-sec"><i class="fas fa-robot"></i> جرّب AI مجاناً</a>
-      </div>
-
-      <div class="hero-trust">
-        <div class="trust-item"><i class="fas fa-check-circle"></i> <b>شهادات معتمدة</b></div>
-        <div class="trust-item"><i class="fas fa-check-circle"></i> <b>دفع عند الاستلام</b></div>
-        <div class="trust-item"><i class="fas fa-check-circle"></i> <b>توصيل لكل العراق</b></div>
-        <div class="trust-item"><i class="fas fa-check-circle"></i> <b>دعم فني 24/7</b></div>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-card"><div class="stat-n">+500</div><div class="stat-l">طالب ناجح</div></div>
-        <div class="stat-card"><div class="stat-n">8</div><div class="stat-l">منتج تعليمي</div></div>
-        <div class="stat-card"><div class="stat-n">5★</div><div class="stat-l">تقييم الطلاب</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI Showcase -->
-  <section class="ai-showcase" id="ai">
-    <div class="ctr">
-      <div class="ai-wrap reveal">
-        <div class="ai-inner">
-          <div class="ai-visual">
-            <div class="ai-ring"></div>
-            <div class="ai-orb"></div>
-            <div class="ai-core"><i class="fas fa-brain"></i></div>
-          </div>
-          <div class="ai-content">
-            <div class="tag"><i class="fas fa-sparkles"></i> AI POWERED</div>
-            <h2>مستشارك التجاري الذكي<br><em>أبو البزيز AI</em></h2>
-            <p>ذكاء اصطناعي متخصص في التجارة وريادة الأعمال، مدرّب على خبرات عراقية حقيقية. اسأله عن التسويق، الاستثمار، المالية، أو أي تحدٍ تجاري — ويجاوبك فوراً بلهجة تفهمها.</p>
-            <div class="ai-feats">
-              <span class="ai-feat"><i class="fas fa-bolt"></i> ردود فورية</span>
-              <span class="ai-feat"><i class="fas fa-clock"></i> متاح 24/7</span>
-              <span class="ai-feat"><i class="fas fa-lock-open"></i> مجاني 100%</span>
-              <span class="ai-feat"><i class="fas fa-language"></i> عربي عراقي</span>
-            </div>
-            <a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="btn-ai-cta">
-              <i class="fas fa-comments"></i> ابدأ المحادثة الآن
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Category pills -->
-  <section class="cat-bar">
-    <div class="ctr">
-      <div class="cat-pills" id="catPills">
-        <button class="cat-pill on" data-cat="all"><i class="fas fa-border-all"></i> الكل</button>
-        <button class="cat-pill" data-cat="course"><i class="fas fa-graduation-cap"></i> الكورسات</button>
-        <button class="cat-pill" data-cat="book"><i class="fas fa-book"></i> الكتب</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section class="sec" id="courses">
-    <div class="ctr">
-      <div class="sec-head reveal">
-        <div class="sec-kicker"><i class="fas fa-graduation-cap"></i> منتجاتنا التعليمية</div>
-        <h2>اختر منتجك و<span>ابدأ التعلم الآن</span></h2>
-        <p>مجموعة مختارة من أفضل الكورسات والكتب التجارية المعدّة خصيصاً لرواد الأعمال في العراق</p>
-      </div>
-      <div class="grid" id="grid"></div>
-    </div>
-  </section>
-
+<!-- PRODUCTS -->
+<section class="sec" id="prodSec"><div class="c">
+<div class="sec-h"><h2>منتجاتنا <em>التعليمية</em></h2><p>كورسات وكتب بأعلى جودة — اختر وابدأ</p></div>
+<div class="tabs" id="tabs">
+<button class="tab on" data-f="all">الكل</button>
+<button class="tab" data-f="course">كورسات</button>
+<button class="tab" data-f="book">كتب</button>
+</div>
+<div class="grid" id="grid"></div>
+</div></section>
 </div>
 
-<!-- DETAIL PAGE -->
-<section class="detail" id="detailPage">
-  <div class="ctr">
-    <button class="detail-back" id="backBtn"><i class="fas fa-arrow-right"></i> العودة إلى المنتجات</button>
-    <div class="detail-grid" id="detailContent"></div>
-  </div>
-</section>
+<!-- DETAIL -->
+<section class="det" id="detPage"><div class="c">
+<button class="det-back" id="backBtn"><i class="fas fa-arrow-right"></i> رجوع</button>
+<div class="det-grid" id="detContent"></div>
+</div></section>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-    <div class="modal-icon"><i class="fas fa-shopping-bag"></i></div>
-    <h3 id="modalTitle">أكمل طلبك</h3>
-    <p class="sub" id="modalSub">املأ البيانات وسنتواصل معك خلال ساعات</p>
-    <form id="orderForm">
-      <div class="field"><label>الاسم الكامل</label><input id="fname" placeholder="محمد أحمد" required></div>
-      <div class="field"><label>المحافظة</label><input id="prov" placeholder="بغداد" required></div>
-      <div class="field"><label>المنطقة / الحي</label><input id="area" placeholder="الكرادة" required></div>
-      <div class="field"><label>رقم الهاتف</label><input id="phone" type="tel" placeholder="07X XXXX XXXX" required></div>
-      <button type="submit" class="submit">تأكيد الطلب — الدفع عند الاستلام</button>
-      <div class="modal-foot"><i class="fas fa-shield-halved"></i> بياناتك محمية ولن تُشارك مع أي طرف ثالث</div>
-    </form>
-  </div>
+<!-- MODAL -->
+<div class="modal" id="modal"><div class="modal-b">
+<button class="modal-x" id="mClose"><i class="fas fa-times"></i></button>
+<h3 id="mTitle">أكمل الطلب</h3>
+<form id="oForm">
+<div class="fi"><label>الاسم</label><input id="fn" placeholder="اسمك الكامل" required></div>
+<div class="fi"><label>المحافظة</label><input id="pv" placeholder="بغداد" required></div>
+<div class="fi"><label>المنطقة</label><input id="ar" placeholder="الكرادة" required></div>
+<div class="fi"><label>الهاتف</label><input id="ph" type="tel" placeholder="07X XXXX XXXX" required></div>
+<button type="submit" class="sbmt">تأكيد — الدفع عند الاستلام</button>
+</form>
+</div></div>
+
+<!-- SUCCESS -->
+<div class="suc" id="suc"><div class="suc-b">
+<div class="ico"><i class="fas fa-check"></i></div>
+<h3>تم بنجاح!</h3>
+<p>شكراً لك — سنتواصل معك قريباً لتأكيد طلبك.</p>
+<button class="suc-btn" id="sucClose">تمام</button>
+</div></div>
+
+<!-- FOOTER -->
+<footer><div class="c ft">
+<p>© 2025 أكاديمية أبو البزيز</p>
+<div class="ft-s">
+<a href="#"><i class="fab fa-telegram"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
 </div>
-
-<!-- Success -->
-<div class="success" id="success">
-  <div class="success-box">
-    <div class="check"><i class="fas fa-check"></i></div>
-    <h3>تم استلام طلبك!</h3>
-    <p>شكراً لثقتك بنا. سيتواصل معك فريقنا خلال الساعات القادمة لتأكيد التفاصيل.</p>
-    <button class="success-btn" id="successClose">حسناً، شكراً</button>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer>
-  <div class="ctr">
-    <div class="ft-grid">
-      <div class="ft-brand">
-        <div class="brand">
-          <div class="brand-mark">
-            <svg viewBox="0 0 20 20" fill="none"><path d="M10 3L16 6V10.5C16 13.5 13.5 16 10 17C6.5 16 4 13.5 4 10.5V6L10 3Z" stroke="#e6b450" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 10L9 12L13 8" stroke="#e6b450" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div class="brand-txt"><small>ACADEMY</small><span>أكاديمية <b>أبو البزيز</b></span></div>
-        </div>
-        <p>أول أكاديمية رقمية عراقية متخصصة في التجارة وريادة الأعمال والاستثمار. نُقدّم لك المعرفة التي تصنع الفرق.</p>
-      </div>
-      <div class="ft-col">
-        <h5>استكشف</h5>
-        <ul>
-          <li><a href="#" data-s="home">الرئيسية</a></li>
-          <li><a href="#" data-s="courses">الكورسات</a></li>
-          <li><a href="#" data-s="books">الكتب</a></li>
-          <li><a href="#ai">الذكاء الاصطناعي</a></li>
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h5>تابعنا</h5>
-        <ul>
-          <li><a href="#"><i class="fab fa-telegram" style="margin-left:6px"></i> تيليغرام</a></li>
-          <li><a href="#"><i class="fab fa-instagram" style="margin-left:6px"></i> إنستغرام</a></li>
-          <li><a href="#"><i class="fab fa-youtube" style="margin-left:6px"></i> يوتيوب</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <p>© 2025 أكاديمية أبو البزيز — جميع الحقوق محفوظة</p>
-      <div class="social">
-        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- FAB -->
-<a href="https://chatgpt.com/g/g-69f6b20613f88191b0bd675898c19785-bw-lbzyz" target="_blank" class="fab-ai" aria-label="أبو البزيز AI"><i class="fas fa-robot"></i></a>
-
+</div></footer>
 <script>
-// DATA
 const D={
-finance:{t:"كورس الهندسة المالية الإدارية",cat:"مالية",p:"500,000",bk:0,hot:1,img:"https://i.ibb.co/PGfSjNpX/IMG-6228.webp",d:"تعلم أساسيات الهندسة المالية واستراتيجيات إدارة المخاطر والاستثمار.",dl:"كورس متكامل يقدم لك أساسيات الهندسة المالية واستراتيجيات إدارة المخاطر المالية والاستثمار. ستتعلم كيفية تحليل الأسواق المالية واتخاذ القرارات الاستثمارية الصحيحة.",dur:"12 ساعة",lvl:"متقدم",f:["تصبح مدير مالي محترف","فهم لغة المدراء والقيادة","بناء نظام مالي من الصفر","إدارة المخاطر المالية","تحليل الأسواق المالية","شهادة معتمدة"]},
-marketing:{t:"كورس التسويق المتقدم",cat:"تسويق",p:"250,000",bk:0,img:"https://i.ibb.co/KzXqRWn0/IMG-6229.webp",d:"تعلّم السوق العراقي على حقيقته وكيف تنقلب اللعبة لصالحك.",dl:"جاهز تصير المسوّق اللي يخلي السوق ينقلب لصالحك؟ هذا الكورس للناس اللي تريد تفهم اللعبة مثل ما هي — مو مثل ما ينطوها بالدورات الوردية.",dur:"10 ساعات",lvl:"متوسط",f:["فهم عقلية الزبون العراقي","تفكيك المنافس واستراتيجيات QASIF","بناء منتج ذو قيمة حقيقية","استراتيجيات التسعير","بناء قنوات توزيع فعالة","شهادة معتمدة"]},
-content:{t:"كورس صناعة المحتوى المتقدم",cat:"محتوى",p:"450,000",bk:0,img:"https://i.ibb.co/5XNfPKKJ/IMG-6230.jpg",d:"إنشاء محتوى جذاب يبني علامتك التجارية ويجذب العملاء.",dl:"تعلم كيفية إنشاء محتوى جذاب وفعال يساعد في بناء علامتك التجارية وجذب العملاء. اكتشف استراتيجيات المحتوى الناجحة وأسرار إنشاء محتوى يلهم ويؤثر.",dur:"14 ساعة",lvl:"متوسط",f:["استراتيجيات المحتوى الفعال","كتابة محتوى جذاب ومؤثر","تصميم المحتوى المرئي","إدارة حسابات التواصل","قياس أداء المحتوى وتحسينه","شهادة معتمدة"]},
-stocks:{t:"كورس سوق الأوراق المالية",cat:"استثمار",p:"200,000",bk:0,img:"https://i.ibb.co/PsjRKWNr/IMG-6233.png",d:"أساسيات التداول وتحليل الأسهم والاستثمار في الأسواق.",dl:"تعلم أساسيات التداول في الأسواق المالية وتحليل الأسهم والاستثمار. اكتشف استراتيجيات التداول الناجحة وكيفية تحقيق الأرباح من الأسواق المالية.",dur:"8 ساعات",lvl:"مبتدئ",f:["أساسيات التداول المتقدم","تحليل الأسهم والاستثمار","استراتيجيات التداول الناجحة","التحليل الفني والأساسي","إدارة المحفظة الاستثمارية","شهادة معتمدة"]},
-realestate:{t:"كورس الوساطة العقارية",cat:"عقارات",p:"1,000,000",bk:0,hot:1,img:"https://i.ibb.co/zVsCXGL2/IMG-6232.jpg",d:"كن الوسيط العقاري المحترف اللي يثق بيه الناس.",dl:"تريد تصير الوسيط العقاري اللي يثقون بيه الناس… مو السمسار العشوائي؟ كورس الوساطة العقارية الاحترافية في العراق يعلمك من البداية للنهاية شلون تشتغل شغل نظيف، قانوني، محترف.",dur:"16 ساعة",lvl:"متقدم",f:["الإطار القانوني للعقار العراقي","تقدير سعر العقار (التثمين)","التسويق العقاري الميداني","بناء شبكة علاقات مهنية","إتمام الصفقات قانونياً","شهادة معتمدة"]},
-"marketing-book":{t:"التسويق العراقي الحديث",cat:"كتاب",p:"30,000",bk:1,img:"https://i.ibb.co/C3wZjgxV/IMG-6226.jpg",d:"دليل شامل لأسرار تسويق المنتجات في السوق العراقي.",dl:"اكتشف أسرار تسويق المنتجات بنجاح مع هذا الدليل الشامل الذي يضع بين يديك كل ما تحتاجه لتحويل أفكارك إلى مشاريع ناجحة. هذا الكتاب هو دليلك الشامل لفهم السوق العراقي.",pages:"280 صفحة",f:["استراتيجيات تسويق مبتكرة","نصائح عملية قابلة للتطبيق","أسرار نجاح من تجارب حقيقية","فهم السوق العراقي","بناء العلامات التجارية","دعم مستمر بعد الشراء"]},
-"mindset-book":{t:"كتاب عقلية الزبون",cat:"كتاب",p:"50,000",bk:1,img:"https://i.ibb.co/5N7tqJ6/IMG-6235.jpg",d:"فهم عقلية الزبون والتأثير في قرارات الشراء.",dl:"فهم عقلية الزبون وكيفية التأثير في قرارات الشراء. هذا الكتاب يقدم لك رؤى عميقة حول كيفية تفكير العملاء وما الذي يحفزهم على الشراء.",pages:"240 صفحة",f:["فهم سلوك المستهلك","استراتيجيات التأثير","تطوير استراتيجيات تسويقية فعالة","رؤى من علم النفس التسويقي","نصائح عملية قابلة للتطبيق","دعم مستمر بعد الشراء"]},
-"sales-book":{t:"فلسفة المبيعات والتفاوض",cat:"كتاب",p:"35,000",bk:1,nw:1,img:"",d:"فن البيع والتفاوض — أغلق أي صفقة بثقة واحترافية.",dl:"أتقن فن البيع والتفاوض مع هذا الكتاب المتخصص الذي يكشف لك أسرار إغلاق الصفقات بثقة واحترافية. تعلّم كيف تقرأ الزبون، تدير الاعتراضات، وتحوّل لا إلى نعم.",pages:"260 صفحة",f:["فلسفة البيع الحديثة","أسرار إغلاق الصفقات","فن التفاوض على السعر","قراءة لغة جسد الزبون","إدارة الاعتراضات","توصيل لكل المحافظات"]}
+finance:{t:"كورس الهندسة المالية الإدارية",cat:"مالية",p:"500,000",bk:0,img:"https://i.ibb.co/PGfSjNpX/IMG-6228.webp",d:"أساسيات الهندسة المالية وإدارة المخاطر والاستثمار.",dl:"كورس متكامل يقدم لك أساسيات الهندسة المالية واستراتيجيات إدارة المخاطر. ستتعلم تحليل الأسواق واتخاذ القرارات الاستثمارية الصحيحة.",f:["مدير مالي محترف","فهم لغة المدراء","بناء نظام مالي من الصفر","إدارة المخاطر","تحليل الأسواق","شهادة معتمدة"]},
+marketing:{t:"كورس التسويق المتقدم",cat:"تسويق",p:"250,000",bk:0,img:"https://i.ibb.co/KzXqRWn0/IMG-6229.webp",d:"تعلّم السوق العراقي على حقيقته واللعبة التسويقية.",dl:"جاهز تصير المسوّق اللي يخلي السوق ينقلب لصالحك؟ هذا الكورس للناس اللي تريد تفهم اللعبة مثل ما هي.",f:["عقلية الزبون العراقي","استراتيجيات QASIF","بناء منتج بقيمة","التسعير والتموضع","قنوات توزيع فعالة","شهادة معتمدة"]},
+content:{t:"كورس صناعة المحتوى",cat:"محتوى",p:"450,000",bk:0,img:"https://i.ibb.co/5XNfPKKJ/IMG-6230.jpg",d:"إنشاء محتوى جذاب يبني علامتك التجارية.",dl:"تعلم إنشاء محتوى جذاب وفعال يساعد في بناء علامتك التجارية وجذب العملاء. استراتيجيات المحتوى الناجحة.",f:["استراتيجيات المحتوى","كتابة جذابة","تصميم مرئي","إدارة التواصل","قياس الأداء","شهادة معتمدة"]},
+stocks:{t:"كورس سوق الأوراق المالية",cat:"استثمار",p:"200,000",bk:0,img:"https://i.ibb.co/PsjRKWNr/IMG-6233.png",d:"أساسيات التداول وتحليل الأسهم والاستثمار.",dl:"تعلم أساسيات التداول في الأسواق المالية وتحليل الأسهم. اكتشف استراتيجيات التداول الناجحة.",f:["التداول المتقدم","تحليل الأسهم","استراتيجيات ناجحة","التحليل الفني","إدارة المحفظة","شهادة معتمدة"]},
+realestate:{t:"كورس الوساطة العقارية",cat:"عقارات",p:"1,000,000",bk:0,img:"https://i.ibb.co/zVsCXGL2/IMG-6232.jpg",d:"كن الوسيط العقاري المحترف اللي يثقون بيه.",dl:"تريد تصير الوسيط العقاري اللي يثقون بيه الناس؟ هذا الكورس يعلمك من البداية للنهاية.",f:["القانون العقاري","التثمين","التسويق الميداني","شبكة العلاقات","إتمام الصفقات","شهادة معتمدة"]},
+"marketing-book":{t:"التسويق العراقي الحديث",cat:"كتاب",p:"30,000",bk:1,img:"https://i.ibb.co/C3wZjgxV/IMG-6226.jpg",d:"دليل شامل لأسرار تسويق المنتجات.",dl:"اكتشف أسرار تسويق المنتجات بنجاح. دليل شامل يضع بين يديك كل ما تحتاجه لتحويل أفكارك إلى مشاريع.",f:["تسويق مبتكر","نصائح عملية","تجارب حقيقية","فهم السوق","بناء العلامة","دعم بعد الشراء"]},
+"mindset-book":{t:"كتاب عقلية الزبون",cat:"كتاب",p:"50,000",bk:1,img:"https://i.ibb.co/5N7tqJ6/IMG-6235.jpg",d:"فهم عقلية الزبون والتأثير بقرارات الشراء.",dl:"رؤى عميقة حول كيفية تفكير العملاء وما الذي يحفزهم على الشراء.",f:["سلوك المستهلك","استراتيجيات التأثير","تسويق فعال","علم النفس","نصائح عملية","دعم بعد الشراء"]},
+"sales-book":{t:"فلسفة المبيعات والتفاوض",cat:"كتاب",p:"35,000",bk:1,nw:1,img:"",d:"فن البيع والتفاوض — أغلق أي صفقة بثقة.",dl:"أتقن فن البيع والتفاوض. أسرار إغلاق الصفقات بثقة واحترافية. تعلّم قراءة الزبون وإدارة الاعتراضات.",f:["فلسفة البيع","إغلاق الصفقات","التفاوض","لغة الجسد","إدارة الاعتراضات","توصيل لكل المحافظات"]}
 };
-
-// Build grid
-const grid=document.getElementById('grid');
-function buildGrid(filter='all'){
-  let html='';
-  const keys=Object.keys(D);
-  const courses=keys.filter(k=>!D[k].bk);
-  const books=keys.filter(k=>D[k].bk);
-
-  if(filter==='all'||filter==='course'){
-    courses.forEach(k=>html+=cardHTML(k,D[k]));
-  }
-  if(filter==='all'){
-    html+=`<div class="section-break"><div class="line"></div><div class="label"><i class="fas fa-book-open"></i> الكتب المتاحة</div><div class="line"></div></div>`;
-  }
-  if(filter==='all'||filter==='book'){
-    books.forEach(k=>html+=cardHTML(k,D[k]));
-  }
-  grid.innerHTML=html;
-  observeReveal();
+const grid=document.getElementById('grid');let cur='';
+function build(f='all'){
+let h='';const ks=Object.keys(D);
+const cs=ks.filter(k=>!D[k].bk),bs=ks.filter(k=>D[k].bk);
+if(f==='all'||f==='course')cs.forEach(k=>h+=mkCard(k));
+if(f==='all')h+=`<div class="brk"><span>📚 الكتب</span></div>`;
+if(f==='all'||f==='book')bs.forEach(k=>h+=mkCard(k));
+grid.innerHTML=h;
 }
-
-function cardHTML(k,c){
-  let bg=c.img?`background-image:url('${c.img}')`:`background:linear-gradient(135deg,#1a0f2e,#0d1b2a)`;
-  let html=`<div class="card${c.bk?' bk':''} reveal" data-k="${k}">`;
-  html+=`<div class="card-media"><div class="img" style="${bg}"></div><div class="card-badges">`;
-  html+=c.bk?`<span class="badge b-type"><i class="fas fa-book"></i> كتاب</span>`:`<span class="badge b-type"><i class="fas fa-graduation-cap"></i> كورس</span>`;
-  html+=c.nw?`<span class="badge b-new"><i class="fas fa-fire"></i> جديد</span>`:(c.hot?`<span class="badge b-hot"><i class="fas fa-star"></i> الأكثر طلباً</span>`:'');
-  html+=`</div></div>`;
-  html+=`<div class="card-body"><div class="card-cat"><i class="fas fa-tag"></i> ${c.cat}</div>`;
-  html+=`<h3 class="card-title">${c.t}</h3><p class="card-desc">${c.d}</p>`;
-  html+=`<div class="card-meta">`;
-  if(c.bk){
-    html+=`<div class="mi"><i class="fas fa-file-lines"></i> ${c.pages}</div>`;
-    html+=`<div class="mi"><i class="fas fa-truck"></i> توصيل مجاني</div>`;
-  }else{
-    html+=`<div class="mi"><i class="fas fa-clock"></i> ${c.dur}</div>`;
-    html+=`<div class="mi"><i class="fas fa-signal"></i> ${c.lvl}</div>`;
-  }
-  html+=`</div>`;
-  html+=`<div class="card-bottom"><div class="price"><span class="amount">${c.p}</span><span class="curr">IQD</span></div>`;
-  html+=`<button class="card-action" data-k="${k}">التفاصيل <i class="fas fa-arrow-left"></i></button></div>`;
-  html+=`</div></div>`;
-  return html;
+function mkCard(k){const c=D[k];
+let bg=c.img?`<div class="bg" style="background-image:url('${c.img}')"></div>`:`<div class="bg" style="background:linear-gradient(135deg,#1a0f2e,#0d1b2a)"></div>`;
+let s=`<div class="card${c.bk?' bk':''}"><div class="card-img">${bg}`;
+if(c.bk)s+=`<span class="bdg bdg-r">📖 كتاب</span>`;
+if(c.nw)s+=`<span class="bdg bdg-l">🔥 جديد</span>`;
+s+=`</div><div class="card-body"><h3>${c.t}</h3><p>${c.d}</p>`;
+s+=`<div class="pr">${c.p} <small>IQD</small></div>`;
+s+=`<ul class="fts">${c.f.slice(0,3).map(x=>'<li>'+x+'</li>').join('')}</ul>`;
+s+=`<button class="card-go" data-k="${k}">التفاصيل <i class="fas fa-arrow-left"></i></button>`;
+s+=`</div></div>`;return s;
 }
-
-// Filter
-document.querySelectorAll('.cat-pill').forEach(p=>{
-  p.onclick=()=>{
-    document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('on'));
-    p.classList.add('on');
-    buildGrid(p.dataset.cat);
-  };
-});
-
-// Navigation
-const homePage=document.getElementById('homePage');
-const detailPage=document.getElementById('detailPage');
-let cur='';
-
-function nav(target){
-  document.querySelectorAll('[data-s]').forEach(a=>a.classList.toggle('on',a.dataset.s===target));
-  document.getElementById('mm').classList.remove('open');
-  document.getElementById('ovl').classList.remove('on');
-
-  if(target==='home'){
-    homePage.style.display='block';
-    detailPage.style.display='none';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }else if(target==='courses'){
-    homePage.style.display='block';
-    detailPage.style.display='none';
-    document.querySelector('[data-cat="course"]').click();
-    setTimeout(()=>document.getElementById('courses').scrollIntoView({behavior:'smooth',block:'start'}),80);
-  }else if(target==='books'){
-    homePage.style.display='block';
-    detailPage.style.display='none';
-    document.querySelector('[data-cat="book"]').click();
-    setTimeout(()=>document.getElementById('courses').scrollIntoView({behavior:'smooth',block:'start'}),80);
-  }
+// Tabs
+document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+build(t.dataset.f);
+}});
+// Nav
+document.getElementById('ham').onclick=()=>document.getElementById('navR').classList.toggle('open');
+document.querySelectorAll('[data-s]').forEach(a=>{a.onclick=e=>{e.preventDefault();
+const s=a.dataset.s;
+document.getElementById('navR').classList.remove('open');
+if(s==='home'){showHome();}
+else if(s==='courses'){showHome();setTimeout(()=>document.getElementById('prodSec').scrollIntoView({behavior:'smooth'}),50);}
+else if(s==='books'){showHome();document.querySelector('[data-f="book"]').click();setTimeout(()=>document.getElementById('prodSec').scrollIntoView({behavior:'smooth'}),50);}
+}});
+// Cards
+grid.onclick=e=>{const b=e.target.closest('[data-k]');if(b)showDet(b.dataset.k);};
+document.getElementById('backBtn').onclick=showHome;
+function showHome(){document.getElementById('homePage').style.display='block';document.getElementById('detPage').style.display='none';window.scrollTo({top:0,behavior:'smooth'});}
+function showDet(k){
+cur=k;const c=D[k];if(!c)return;
+document.getElementById('homePage').style.display='none';
+document.getElementById('detPage').style.display='block';
+let bg=c.img?`background-image:url('${c.img}')`:`background:linear-gradient(135deg,#1a0f2e,#0d1b2a)`;
+let h=`<div class="det-vis"><div class="bk3d"><div class="bk3d-in"><div class="bk3d-cv" style="${bg}"></div><div class="bk3d-sp"></div></div></div></div>`;
+h+=`<div class="det-info"><h1>${c.t}</h1><p>${c.dl}</p>`;
+h+=`<div class="det-pr">${c.p} <small>IQD</small></div>`;
+h+=`<ul class="det-fts">${c.f.map(x=>`<li><i class="fas fa-check"></i>${x}</li>`).join('')}</ul>`;
+h+=`<button class="btn1" id="detOrder"><i class="fas fa-${c.bk?'shopping-bag':'graduation-cap'}"></i> ${c.bk?'اطلب الكتاب':'اشترك الآن'}</button>`;
+h+=`</div>`;
+document.getElementById('detContent').innerHTML=h;
+document.getElementById('detOrder').onclick=()=>openM(k);
+window.scrollTo({top:0,behavior:'smooth'});
 }
-
-document.querySelectorAll('[data-s]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const s=a.dataset.s;
-    if(s){e.preventDefault();nav(s);}
-  });
-});
-
-// Card clicks
-grid.addEventListener('click',e=>{
-  const btn=e.target.closest('[data-k]');
-  if(btn)showDetail(btn.dataset.k);
-});
-
-function showDetail(k){
-  cur=k;const c=D[k];if(!c)return;
-  homePage.style.display='none';
-  detailPage.style.display='block';
-  let coverBg=c.img?`background-image:url('${c.img}')`:`background:linear-gradient(135deg,#1a0f2e,#0d1b2a)`;
-  let html=`<div class="detail-content">`;
-  html+=`<div class="detail-cat">${c.bk?'📖':'🎓'} ${c.cat}</div>`;
-  html+=`<h1>${c.t}</h1><p class="detail-desc">${c.dl}</p>`;
-  html+=`<div class="detail-price"><span class="amount">${c.p}</span><span class="curr">IQD</span>`;
-  html+=`<span class="note"><i class="fas fa-${c.bk?'truck':'bolt'}"></i> ${c.bk?'شامل التوصيل':'وصول فوري'}</span></div>`;
-  html+=`<div class="detail-feats"><h4><i class="fas fa-list-check"></i> ما ستحصل عليه</h4><ul>`;
-  c.f.forEach(f=>html+=`<li><i class="fas fa-check"></i> ${f}</li>`);
-  html+=`</ul></div>`;
-  html+=`<div class="detail-cta-row">`;
-  html+=`<button class="btn-pri" id="openModal"><i class="fas fa-${c.bk?'shopping-bag':'graduation-cap'}"></i> ${c.bk?'اطلب الكتاب الآن':'اشترك الآن'}</button>`;
-  html+=`<span class="note"><i class="fas fa-shield-halved"></i> دفع عند الاستلام</span>`;
-  html+=`</div></div>`;
-  html+=`<div class="detail-visual"><div class="book-3d"><div class="book-inner"><div class="bk-back"></div><div class="bk-pages"></div><div class="bk-spine"></div><div class="bk-cover" style="${coverBg}"></div></div><div class="bk-shadow"></div></div></div>`;
-  document.getElementById('detailContent').innerHTML=html;
-  document.getElementById('openModal').onclick=()=>openModal(k);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-document.getElementById('backBtn').onclick=()=>nav('home');
-
 // Modal
-const modal=document.getElementById('modal');
-const success=document.getElementById('success');
-function openModal(k){
-  cur=k;const c=D[k];
-  document.getElementById('modalTitle').textContent=c.bk?`اطلب ${c.t}`:`اشترك في ${c.t}`;
-  document.getElementById('modalSub').textContent=c.bk?`الدفع عند الاستلام — توصيل لكل المحافظات`:`دفع آمن وتفعيل فوري بعد التأكيد`;
-  modal.style.display='flex';
-}
-document.getElementById('modalClose').onclick=()=>modal.style.display='none';
-document.getElementById('successClose').onclick=()=>success.style.display='none';
-modal.onclick=e=>{if(e.target===modal)modal.style.display='none'};
-success.onclick=e=>{if(e.target===success)success.style.display='none'};
-
-document.getElementById('orderForm').onsubmit=function(e){
-  e.preventDefault();
-  const c=D[cur];
-  const name=document.getElementById('fname').value;
-  const prov=document.getElementById('prov').value;
-  const area=document.getElementById('area').value;
-  const phone=document.getElementById('phone').value;
-  let msg=`🎯 طلب جديد - ${c.bk?'كتاب':'كورس'}\n\n`;
-  msg+=`📘 المنتج: ${c.t}\n`;
-  msg+=`💰 السعر: ${c.p} IQD${cur==='sales-book'?' (شامل التوصيل)':''}\n\n`;
-  msg+=`👤 العميل:\n`;
-  msg+=`├ الاسم: ${name}\n`;
-  msg+=`├ المحافظة: ${prov}\n`;
-  msg+=`├ المنطقة: ${area}\n`;
-  msg+=`└ الهاتف: ${phone}`;
-  const token='8577344981:AAH2XQtxMD25pJ4DMJNDVcDX5LW_Ea43zUs';
-  const ids=['1160431494','5911440873'];
-  const url=`https://api.telegram.org/bot${token}/sendMessage`;
-  Promise.all(ids.map(id=>fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:id,text:msg})}))).finally(()=>{
-    modal.style.display='none';
-    this.reset();
-    success.style.display='flex';
-  });
+const modal=document.getElementById('modal'),suc=document.getElementById('suc');
+function openM(k){cur=k;const c=D[k];
+document.getElementById('mTitle').textContent=c.bk?'اطلب '+c.t:'اشترك في '+c.t;
+modal.style.display='flex';}
+document.getElementById('mClose').onclick=()=>modal.style.display='none';
+document.getElementById('sucClose').onclick=()=>suc.style.display='none';
+modal.onclick=e=>{if(e.target===modal)modal.style.display='none';};
+suc.onclick=e=>{if(e.target===suc)suc.style.display='none';};
+document.getElementById('oForm').onsubmit=function(e){
+e.preventDefault();const c=D[cur];
+let msg=`🎯 طلب جديد\n📘 ${c.t}\n💰 ${c.p} IQD\n\n👤 ${document.getElementById('fn').value}\n📍 ${document.getElementById('pv').value} - ${document.getElementById('ar').value}\n📱 ${document.getElementById('ph').value}`;
+const tk='8577344981:AAH2XQtxMD25pJ4DMJNDVcDX5LW_Ea43zUs';
+const ids=['1160431494','5911440873'];
+Promise.all(ids.map(id=>fetch(`https://api.telegram.org/bot${tk}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:id,text:msg})}))).finally(()=>{
+modal.style.display='none';this.reset();suc.style.display='flex';});
 };
-
-// Mobile menu
-document.getElementById('ham').onclick=()=>{
-  document.getElementById('mm').classList.add('open');
-  document.getElementById('ovl').classList.add('on');
-};
-document.getElementById('mmClose').onclick=()=>{
-  document.getElementById('mm').classList.remove('open');
-  document.getElementById('ovl').classList.remove('on');
-};
-document.getElementById('ovl').onclick=()=>{
-  document.getElementById('mm').classList.remove('open');
-  document.getElementById('ovl').classList.remove('on');
-};
-
-// Scroll nav effect
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
-});
-
-// Reveal animation
-function observeReveal(){
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
-}
-
-// Init
-buildGrid('all');
-observeReveal();
+build('all');
 </script>
 </body>
 </html>

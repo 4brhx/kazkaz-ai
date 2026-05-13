@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KazKaz AI - أداة الذكاء الاصطناعي</title>
+    <title>KazKaz AI - مساعدك الذكي المتقدم</title>
+    <meta name="description" content="أداة ذكاء اصطناعي متقدمة مع دردشة تفاعلية ورفع ملفات وتحليل ذكي">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,21 +12,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Particles Background -->
+    <canvas id="particles"></canvas>
+
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
-                <i class="fas fa-robot"></i>
-                <span>KazKaz AI</span>
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <span>KazKaz <span class="logo-ai">AI</span></span>
             </div>
             <nav class="nav-links">
                 <a href="#features">المميزات</a>
                 <a href="#chat-section">الدردشة</a>
                 <a href="#about">حول</a>
             </nav>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -36,13 +44,18 @@
             <div class="floating-shape shape-2"></div>
             <div class="floating-shape shape-3"></div>
             <div class="floating-shape shape-4"></div>
+            <div class="floating-shape shape-5"></div>
         </div>
         <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i>
+                <span>مدعوم بـ Google Gemini 2.0</span>
+            </div>
             <h1 class="hero-title">
                 <span class="gradient-text">KazKaz AI</span>
                 <br>مساعدك الذكي المتقدم
             </h1>
-            <p class="hero-subtitle">تجربة ذكاء اصطناعي متطورة مع دردشة تفاعلية ورفع ملفات وتحليل ذكي</p>
+            <p class="hero-subtitle">تجربة ذكاء اصطناعي من الجيل التالي - دردشة تفاعلية، تحليل ملفات وصور، كتابة أكواد، والمزيد</p>
             <div class="hero-buttons">
                 <a href="#chat-section" class="btn btn-primary">
                     <i class="fas fa-comments"></i>
@@ -53,6 +66,22 @@
                     اكتشف المميزات
                 </a>
             </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">Gemini 2.0</span>
+                    <span class="hero-stat-label">أحدث موديل</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">100+</span>
+                    <span class="hero-stat-label">لغة مدعومة</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">24/7</span>
+                    <span class="hero-stat-label">متاح دائماً</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -60,49 +89,49 @@
     <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">مميزات متقدمة</h2>
-            <p class="section-subtitle">أدوات ذكية تساعدك في مهامك اليومية</p>
+            <p class="section-subtitle">أدوات ذكية مدعومة بأحدث تقنيات الذكاء الاصطناعي</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon icon-purple">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>ذكاء اصطناعي متقدم</h3>
-                    <p>مدعوم بتقنية Google Gemini لتقديم إجابات دقيقة وذكية</p>
+                    <p>مدعوم بتقنية Google Gemini 2.0 Flash لتقديم إجابات دقيقة وذكية بسرعة فائقة</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon icon-green">
                         <i class="fas fa-file-upload"></i>
                     </div>
-                    <h3>رفع الملفات</h3>
-                    <p>ارفع صور ومستندات وملفات لتحليلها بالذكاء الاصطناعي</p>
+                    <h3>رفع وتحليل الملفات</h3>
+                    <p>ارفع صور ومستندات وملفات لتحليلها واستخراج المعلومات منها بذكاء</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon icon-blue">
                         <i class="fas fa-comments"></i>
                     </div>
                     <h3>دردشة تفاعلية</h3>
-                    <p>محادثة سلسة مع ذاكرة سياقية للمحادثات السابقة</p>
+                    <p>محادثة سلسة مع ذاكرة سياقية كاملة تفهم ما تريده بدقة</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon icon-orange">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3>تحليل الكود</h3>
-                    <p>كتابة وتحليل ومراجعة الأكواد البرمجية بكفاءة</p>
+                    <h3>تحليل وكتابة الكود</h3>
+                    <p>كتابة وتحليل ومراجعة الأكواد البرمجية بجميع اللغات بكفاءة عالية</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
+                    <div class="feature-icon icon-pink">
+                        <i class="fas fa-image"></i>
                     </div>
-                    <h3>متعدد اللغات</h3>
-                    <p>يدعم العربية والإنجليزية وجميع اللغات العالمية</p>
+                    <h3>فهم الصور</h3>
+                    <p>تحليل وشرح الصور والرسومات والمخططات بدقة متناهية</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="feature-icon icon-cyan">
+                        <i class="fas fa-shield-halved"></i>
                     </div>
-                    <h3>سرعة فائقة</h3>
-                    <p>استجابة سريعة وفورية لجميع استفساراتك</p>
+                    <h3>آمن وخاص</h3>
+                    <p>محادثاتك محمية ولا يتم تخزينها - خصوصيتك أولويتنا</p>
                 </div>
             </div>
         </div>
@@ -112,9 +141,31 @@
     <section class="chat-section" id="chat-section">
         <div class="container">
             <h2 class="section-title">الدردشة الذكية</h2>
-            <p class="section-subtitle">تحدث مع KazKaz AI الآن</p>
+            <p class="section-subtitle">تحدث مع KazKaz AI الآن - اسأل أي شيء!</p>
             
             <div class="chat-container">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <div class="chat-header-avatar">
+                            <i class="fas fa-robot"></i>
+                            <span class="online-dot"></span>
+                        </div>
+                        <div>
+                            <h4>KazKaz AI</h4>
+                            <span class="chat-status">متصل الآن</span>
+                        </div>
+                    </div>
+                    <div class="chat-header-actions">
+                        <button class="action-btn" id="clearChat" title="مسح المحادثة">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="action-btn" id="exportChat" title="تصدير المحادثة">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Chat Messages -->
                 <div class="chat-messages" id="chatMessages">
                     <div class="message ai-message">
@@ -123,8 +174,15 @@
                         </div>
                         <div class="message-content">
                             <div class="message-bubble">
-                                <p>مرحباً! أنا KazKaz AI، مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟</p>
-                                <p>يمكنك سؤالي عن أي شيء أو رفع ملف لتحليله.</p>
+                                <p>مرحباً! أنا <strong>KazKaz AI</strong>، مساعدك الذكي المتقدم.</p>
+                                <p>يمكنني مساعدتك في:</p>
+                                <ul>
+                                    <li>الإجابة على أسئلتك</li>
+                                    <li>تحليل الصور والملفات</li>
+                                    <li>كتابة ومراجعة الأكواد</li>
+                                    <li>الترجمة والكتابة الإبداعية</li>
+                                </ul>
+                                <p>كيف يمكنني مساعدتك اليوم؟</p>
                             </div>
                             <span class="message-time">الآن</span>
                         </div>
@@ -152,21 +210,11 @@
                         <textarea 
                             class="chat-input" 
                             id="chatInput" 
-                            placeholder="اكتب رسالتك هنا..."
+                            placeholder="اكتب رسالتك هنا... (Enter للإرسال)"
                             rows="1"
                         ></textarea>
                         <button class="send-btn" id="sendBtn" title="إرسال">
                             <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                    <div class="chat-actions">
-                        <button class="action-btn" id="clearChat" title="مسح المحادثة">
-                            <i class="fas fa-trash"></i>
-                            <span>مسح</span>
-                        </button>
-                        <button class="action-btn" id="exportChat" title="تصدير المحادثة">
-                            <i class="fas fa-download"></i>
-                            <span>تصدير</span>
                         </button>
                     </div>
                 </div>
@@ -180,20 +228,29 @@
             <h2 class="section-title">حول KazKaz AI</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>KazKaz AI هو مساعد ذكاء اصطناعي متقدم مبني على تقنية Google Gemini. يقدم تجربة محادثة سلسة وذكية مع إمكانية تحليل الملفات والصور.</p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">متاح دائماً</span>
+                    <p>KazKaz AI هو مساعد ذكاء اصطناعي من الجيل التالي، مبني على أحدث تقنيات Google Gemini 2.0. يقدم تجربة محادثة ذكية وسلسة مع إمكانيات متقدمة لتحليل الملفات والصور وكتابة الأكواد.</p>
+                </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-rocket"></i>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100+</span>
-                            <span class="stat-label">لغة مدعومة</span>
+                        <h4>سريع</h4>
+                        <p>استجابة فورية بفضل Gemini Flash</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-globe"></i>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">AI</span>
-                            <span class="stat-label">Gemini Pro</span>
+                        <h4>عالمي</h4>
+                        <p>يدعم أكثر من 100 لغة</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-lock"></i>
                         </div>
+                        <h4>آمن</h4>
+                        <p>بياناتك محمية بالكامل</p>
                     </div>
                 </div>
             </div>

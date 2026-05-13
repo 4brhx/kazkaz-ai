@@ -1,6 +1,5 @@
 // ============ Configuration ============
-const API_KEY = 'AIzaSyA3I1DbGJOlgefXh43Xa1FUIyiXwBCZMCU';
-const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const API_URL = '/api/chat';
 
 // ============ DOM Elements ============
 const chatMessages = document.getElementById('chatMessages');
@@ -131,7 +130,7 @@ async function callGeminiAPI() {
         ]
     };
 
-    const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+    const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)

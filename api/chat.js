@@ -84,7 +84,7 @@ export default async function handler(req, res) {
                 'X-Title': 'Abu Al-Baziz AI'
             },
             body: JSON.stringify({
-                model: 'deepseek/deepseek-chat-v4-0324',
+                model: 'deepseek/deepseek-v4-flash',
                 messages: allMessages,
                 max_tokens: 8192,
                 temperature: 0.7

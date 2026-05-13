@@ -48,7 +48,7 @@ export default async function handler(req, res) {
                 'X-Title': 'KazKaz AI'
             },
             body: JSON.stringify({
-                model: 'google/gemini-2.0-flash-exp:free',
+                model: 'google/gemini-2.0-flash-001',
                 messages: messages,
                 max_tokens: 8192,
                 temperature: 0.7

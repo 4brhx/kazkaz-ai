@@ -1,6 +1,6 @@
-const { BOOK_PROMPT } = require('./book-content.js');
+import { BOOK_PROMPT } from './book-content.js';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -39,9 +39,9 @@ module.exports = async function handler(req, res) {
                 'X-Title': 'Abu Al-Baziz AI'
             },
             body: JSON.stringify({
-                model: 'deepseek/deepseek-chat',
+                model: 'deepseek/deepseek-v4-flash',
                 messages: allMessages,
-                max_tokens: 4096,
+                max_tokens: 8192,
                 temperature: 0.7
             })
         });
@@ -64,4 +64,4 @@ module.exports = async function handler(req, res) {
     } catch (error) {
         return res.status(500).json({ error: { message: error.message } });
     }
-};
+}

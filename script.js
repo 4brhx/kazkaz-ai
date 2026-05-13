@@ -14,10 +14,6 @@ const welcomeScreen = document.getElementById('welcomeScreen');
 const messagesList = document.getElementById('messagesList');
 const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
-const fileInput = document.getElementById('fileInput');
-const filePreview = document.getElementById('filePreview');
-const fileName = document.getElementById('fileName');
-const removeFileBtn = document.getElementById('removeFileBtn');
 const themeToggle = document.getElementById('themeToggle');
 const chatTitle = document.getElementById('chatTitle');
 
@@ -25,7 +21,6 @@ const chatTitle = document.getElementById('chatTitle');
 let conversations = [];
 let currentConversationId = null;
 let isGenerating = false;
-let selectedFile = null;
 
 // ===== Initialize =====
 function init() {
@@ -53,10 +48,6 @@ function setupEventListeners() {
 
     // Send button
     sendBtn.addEventListener('click', sendMessage);
-
-    // File upload
-    fileInput.addEventListener('change', handleFileSelect);
-    removeFileBtn.addEventListener('click', removeFile);
 
     // Theme toggle
     themeToggle.addEventListener('click', toggleTheme);
@@ -181,7 +172,7 @@ function handleInputChange() {
     messageInput.style.height = Math.min(messageInput.scrollHeight, 150) + 'px';
     
     // Enable/disable send button
-    const hasContent = messageInput.value.trim().length > 0 || selectedFile;
+    const hasContent = messageInput.value.trim().length > 0;
     sendBtn.disabled = !hasContent || isGenerating;
 }
 
@@ -194,28 +185,10 @@ function handleKeyDown(e) {
     }
 }
 
-// ===== File Handling =====
-function handleFileSelect(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    selectedFile = file;
-    fileName.textContent = file.name;
-    filePreview.style.display = 'block';
-    handleInputChange();
-}
-
-function removeFile() {
-    selectedFile = null;
-    fileInput.value = '';
-    filePreview.style.display = 'none';
-    handleInputChange();
-}
-
 // ===== Message Sending =====
 async function sendMessage() {
     const text = messageInput.value.trim();
-    if (!text && !selectedFile) return;
+    if (!text) return;
     if (isGenerating) return;
 
     // Hide welcome screen
@@ -223,43 +196,22 @@ async function sendMessage() {
 
     // Create conversation if needed
     if (!currentConversationId) {
-        createConversation(text || 'صورة');
+        createConversation(text);
     }
 
     const conv = getCurrentConversation();
 
-    // Build message parts
-    const userParts = [];
-    let fileData = null;
-
-    if (selectedFile) {
-        fileData = await readFileAsBase64(selectedFile);
-        if (fileData) {
-            userParts.push({
-                inlineData: {
-                    mimeType: selectedFile.type,
-                    data: fileData
-                }
-            });
-        }
-    }
-
-    if (text) {
-        userParts.push({ text: text });
-    }
-
     // Add user message to conversation
-    conv.messages.push({ role: 'user', content: text || '📎 ملف مرفق', parts: userParts });
+    conv.messages.push({ role: 'user', content: text });
     saveConversations();
 
     // Display user message
-    appendMessageToDOM('user', text || '📎 ملف مرفق');
+    appendMessageToDOM('user', text);
     scrollToBottom();
 
     // Clear input
     messageInput.value = '';
     messageInput.style.height = 'auto';
-    removeFile();
     handleInputChange();
 
     // Show typing indicator
@@ -268,10 +220,10 @@ async function sendMessage() {
     sendBtn.disabled = true;
 
     try {
-        // Build API request body
+        // Build API request body - text only
         const contents = conv.messages.map(msg => ({
             role: msg.role === 'user' ? 'user' : 'model',
-            parts: msg.parts || [{ text: msg.content }]
+            parts: [{ text: msg.content }]
         }));
 
         const response = await fetch(API_URL, {
@@ -290,7 +242,7 @@ async function sendMessage() {
         const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || 'عذراً، لم أتمكن من الرد.';
 
         // Add AI message to conversation
-        conv.messages.push({ role: 'model', content: aiText, parts: [{ text: aiText }] });
+        conv.messages.push({ role: 'model', content: aiText });
         saveConversations();
 
         // Remove typing indicator and show response
@@ -306,19 +258,6 @@ async function sendMessage() {
         isGenerating = false;
         handleInputChange();
     }
-}
-
-// ===== File Reading =====
-function readFileAsBase64(file) {
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            const base64 = reader.result.split(',')[1];
-            resolve(base64);
-        };
-        reader.onerror = () => resolve(null);
-        reader.readAsDataURL(file);
-    });
 }
 
 // ===== DOM Manipulation =====

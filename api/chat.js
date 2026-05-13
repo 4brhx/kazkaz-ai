@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const API_KEY = 'sk-a4756417a5f74770a067240e6ead93fd';
+    const API_KEY = process.env.OPENROUTER_API_KEY;
 
     try {
         const messages = [];
@@ -12,17 +12,16 @@ export default async function handler(req, res) {
                 const role = content.role === 'model' ? 'assistant' : 'user';
                 const parts = content.parts || [];
 
-                const messageParts = [];
+                // Extract text only
+                let textContent = '';
                 for (const part of parts) {
                     if (part.text) {
-                        messageParts.push({ type: 'text', text: part.text });
+                        textContent += part.text;
                     }
                 }
 
-                if (messageParts.length === 1 && messageParts[0].type === 'text') {
-                    messages.push({ role, content: messageParts[0].text });
-                } else if (messageParts.length > 0) {
-                    messages.push({ role, content: messageParts });
+                if (textContent) {
+                    messages.push({ role, content: textContent });
                 }
             }
         }
@@ -76,14 +75,16 @@ export default async function handler(req, res) {
             ...messages
         ];
 
-        const response = await fetch('https://api.deepseek.com/chat/completions', {
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
+                'Authorization': `Bearer ${API_KEY}`,
+                'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
+                'X-Title': 'Abu Al-Baziz AI'
             },
             body: JSON.stringify({
-                model: 'deepseek-v4-flash',
+                model: 'deepseek/deepseek-chat-v4-0324',
                 messages: allMessages,
                 max_tokens: 8192,
                 temperature: 0.7

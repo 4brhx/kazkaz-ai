@@ -39,7 +39,7 @@ export default async function handler(req, res) {
                 'X-Title': 'Abu Al-Baziz AI'
             },
             body: JSON.stringify({
-                model: 'deepseek/deepseek-v4-pro',
+                model: 'google/gemini-2.5-flash',
                 messages: allMessages,
                 max_tokens: 8192,
                 temperature: 0.7

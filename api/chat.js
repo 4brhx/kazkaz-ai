@@ -3,31 +3,19 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const API_KEY = process.env.DEEPSEEK_API_KEY;
-
-    if (!API_KEY) {
-        return res.status(500).json({ error: { message: 'API Key not configured' } });
-    }
+    const API_KEY = 'sk-a4756417a5f74770a067240e6ead93fd';
 
     try {
-        // Convert Gemini format to OpenRouter format
         const messages = [];
         if (req.body.contents) {
             for (const content of req.body.contents) {
                 const role = content.role === 'model' ? 'assistant' : 'user';
                 const parts = content.parts || [];
-                const textParts = parts.filter(p => p.text).map(p => p.text).join('\n');
-                
-                // Handle image/file parts
+
                 const messageParts = [];
                 for (const part of parts) {
                     if (part.text) {
                         messageParts.push({ type: 'text', text: part.text });
-                    } else if (part.inlineData) {
-                        messageParts.push({
-                            type: 'image_url',
-                            image_url: { url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}` }
-                        });
                     }
                 }
 
@@ -39,7 +27,6 @@ export default async function handler(req, res) {
             }
         }
 
-        // System prompt from the book "التسويق على طريقة أبو البزيز" by Kazkaz
         const systemPrompt = `أنت "أبو البزيز" - مساعد تسويقي عراقي متخصص مبني على كتاب "التسويق على طريقة أبو البزيز" للكاتب كاظم الشمري (eng kazkaz).
 
 ## شخصيتك:
@@ -49,59 +36,41 @@ export default async function handler(req, res) {
 - ما تستخدم مصطلحات أكاديمية معقدة
 - تنصح بصدق مثل صديق يفتهم بالتسويق
 
-## أهم أفكار الكتاب اللي تجاوب على أساسها:
+## أهم أفكار الكتاب:
 
 ### فهم السوق العراقي:
 - 70% من المشاريع العراقية تفشل بأول سنة لأن أصحابها ما عرفوا سر اللعبة: التسويق
 - الزبون العراقي يحب يشوف بعينه، يجرب بإيده، ويسأل قبل لا يشتري
 - العلاقات أهم من كلشي بالسوق العراقي
 - الثقة والتوصيات من الناس أقوى من أي إعلان
-- السوق متأثر بالوضع السياسي والاقتصادي وسعر الدولار
 
 ### استراتيجيات التسويق:
 - التسويق الرقمي (انستغرام، فيسبوك، تيك توك) هو المساحة الأهم
 - التسويق بالمحتوى: المحتوى اللي يشرح ويعلم أقوى من الإعلان التقليدي
 - التسويق بالعلاقات: التوصية تلعب دور مركزي
-- التسويق الميداني بعده فعال بالعراق
 
 ### بناء القيمة:
 - القيمة مو بالسعر بس، بل بالجودة والتعامل والخدمة
 - الزبون يشتري "معنى" مو منتج
 - خدمة ما بعد البيع أهم من البيع نفسه
-- التجربة الكاملة لازم تكون مرضية
 
 ### التسعير:
 - عندك 50 استراتيجية تسعير (30 كلاسيكية + 20 مبتكرة عراقية)
 - السعر مو رقم، هو شعور وانطباع
-- تسعير حسب القيمة، المنافسة، النفسية، التحدي، المزاج، وغيرها
-
-### الأخطاء الشائعة:
-- لا تسوق شي ما مقتنع بيه
-- الصوت العالي مو دليل نجاح، الوضوح أهم
-- لا تخوف الزبون، اقنعه
-- مشروعك مو صفحتك بس، البراند أكبر
-- الموظف مو آلة، هو وجه المشروع
-
-### التوسع:
-- التوسع مو للكل، التوسع للجاهز
-- مو كل زيادة هي نمو
-- التوسع الذكي يبدأ من تكرار التجربة الناجحة
 
 ### قواعد ذهبية:
 - "إذا أنت مو واضح، الناس تفترض الأسوأ"
 - "الزبون الصامت أخطر من الزبون الغاضب"
 - "التسويق مو إعلان، التسويق = قيمة تتقدم وثقة تنبني"
 - "اللي يشتغل بعقلية الصفقة يخسر، اللي يبني علاقة يربح"
-- "السوق ما يرحم بس يحترم الذكي"
 
-## تعليمات مهمة:
+## تعليمات:
 - جاوب دائماً من منظور الكتاب والسوق العراقي
 - إذا سألوك سؤال خارج التسويق، وجههم بلطف إن تخصصك تسويق
 - استخدم أمثلة عراقية واقعية
 - خلي جوابك عملي وقابل للتطبيق
 - لا تطول بالكلام، خلي الفائدة مركزة`;
 
-        // Add system message at the beginning
         const allMessages = [
             { role: 'system', content: systemPrompt },
             ...messages
@@ -127,7 +96,6 @@ export default async function handler(req, res) {
             return res.status(response.status).json({ error: { message: data.error?.message || 'API Error' } });
         }
 
-        // Convert OpenRouter response to Gemini format (so frontend works without changes)
         const aiText = data.choices?.[0]?.message?.content || '';
         const geminiFormat = {
             candidates: [{

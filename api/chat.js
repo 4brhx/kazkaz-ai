@@ -45,7 +45,7 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${API_KEY}`,
                 'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
-                'X-Title': 'KazKaz AI'
+                'X-Title': 'Abu AlBzeez AI'
             },
             body: JSON.stringify({
                 model: 'google/gemini-2.0-flash-001',

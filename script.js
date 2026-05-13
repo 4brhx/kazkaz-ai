@@ -105,7 +105,7 @@ function startNewChat() {
     currentConversationId = null;
     messagesList.innerHTML = '';
     welcomeScreen.style.display = 'flex';
-    chatTitle.textContent = 'محادثة جديدة';
+    chatTitle.textContent = 'أبو البزيز';
     renderConversationsList();
 }
 

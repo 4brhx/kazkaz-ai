@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const API_KEY = process.env.GEMINI_API_KEY;
+    const API_KEY = process.env.DEEPSEEK_API_KEY;
 
     if (!API_KEY) {
         return res.status(500).json({ error: { message: 'API Key not configured' } });
@@ -107,16 +107,14 @@ export default async function handler(req, res) {
             ...messages
         ];
 
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        const response = await fetch('https://api.deepseek.com/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`,
-                'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
-                'X-Title': 'Abu AlBzeez AI'
+                'Authorization': `Bearer ${API_KEY}`
             },
             body: JSON.stringify({
-                model: 'google/gemini-2.0-flash-001',
+                model: 'deepseek-v4-flash',
                 messages: allMessages,
                 max_tokens: 8192,
                 temperature: 0.7

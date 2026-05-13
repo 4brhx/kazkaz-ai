@@ -12,12 +12,8 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- Animated Background -->
-        <div class="bg-decoration">
-            <div class="bg-orb bg-orb-1"></div>
-            <div class="bg-orb bg-orb-2"></div>
-            <div class="bg-orb bg-orb-3"></div>
-        </div>
+        <!-- Subtle Background -->
+        <div class="bg-decoration"></div>
 
         <!-- Sidebar Overlay for Mobile -->
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -27,11 +23,11 @@
             <div class="sidebar-header">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-landmark"></i>
                     </div>
                     <div class="logo-text">
                         <span class="logo-name">أبو البزيز</span>
-                        <span class="logo-subtitle">مساعدك الذكي</span>
+                        <span class="logo-subtitle">مستشارك التسويقي</span>
                     </div>
                 </div>
                 <button class="new-chat-btn" id="newChatBtn">
@@ -78,48 +74,48 @@
             <div class="messages-container" id="messagesContainer">
                 <div class="welcome-screen" id="welcomeScreen">
                     <div class="welcome-badge">
-                        <span>مدعوم بالذكاء الاصطناعي</span>
+                        <span>مستشار تسويقي ذكي</span>
                     </div>
                     <div class="welcome-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-landmark"></i>
                     </div>
                     <h2>مرحباً بك في <span class="gradient-text">أبو البزيز</span></h2>
-                    <p>مساعدك الذكي الذي يفهمك. اسأل أي سؤال وسأساعدك بأفضل طريقة ممكنة.</p>
+                    <p>مستشارك التسويقي المتخصص في السوق العراقي. اسألني عن استراتيجيات التسويق، بناء العلامة التجارية، وأسرار النجاح في عالم الأعمال.</p>
                     <div class="suggestions">
-                        <button class="suggestion-btn" data-text="اشرحلي الذكاء الاصطناعي بشكل مبسط">
+                        <button class="suggestion-btn" data-text="كيف أبني علامة تجارية قوية في السوق العراقي؟">
                             <div class="suggestion-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-crown"></i>
                             </div>
                             <div class="suggestion-text">
-                                <span class="suggestion-title">اشرحلي الذكاء الاصطناعي</span>
-                                <span class="suggestion-desc">شرح مبسط وواضح</span>
+                                <span class="suggestion-title">بناء العلامة التجارية</span>
+                                <span class="suggestion-desc">استراتيجيات للسوق العراقي</span>
                             </div>
                         </button>
-                        <button class="suggestion-btn" data-text="ساعدني أكتب كود بايثون">
+                        <button class="suggestion-btn" data-text="شنو أفضل طرق التسويق الرقمي للمشاريع الصغيرة؟">
                             <div class="suggestion-icon">
-                                <i class="fas fa-code"></i>
+                                <i class="fas fa-chart-line"></i>
                             </div>
                             <div class="suggestion-text">
-                                <span class="suggestion-title">ساعدني أكتب كود</span>
-                                <span class="suggestion-desc">برمجة وتطوير</span>
+                                <span class="suggestion-title">التسويق الرقمي</span>
+                                <span class="suggestion-desc">خطط للمشاريع الصغيرة</span>
                             </div>
                         </button>
-                        <button class="suggestion-btn" data-text="اكتبلي مقال عن التكنولوجيا">
+                        <button class="suggestion-btn" data-text="كيف أكتب محتوى تسويقي يجذب الزبائن؟">
                             <div class="suggestion-icon">
                                 <i class="fas fa-pen-fancy"></i>
                             </div>
                             <div class="suggestion-text">
-                                <span class="suggestion-title">اكتبلي مقال</span>
-                                <span class="suggestion-desc">كتابة إبداعية</span>
+                                <span class="suggestion-title">كتابة المحتوى التسويقي</span>
+                                <span class="suggestion-desc">جذب الجمهور المستهدف</span>
                             </div>
                         </button>
-                        <button class="suggestion-btn" data-text="ترجملي هذا النص للإنجليزي">
+                        <button class="suggestion-btn" data-text="شلون أسعّر منتجاتي بشكل صحيح؟">
                             <div class="suggestion-icon">
-                                <i class="fas fa-language"></i>
+                                <i class="fas fa-tags"></i>
                             </div>
                             <div class="suggestion-text">
-                                <span class="suggestion-title">ترجملي نص</span>
-                                <span class="suggestion-desc">ترجمة احترافية</span>
+                                <span class="suggestion-title">استراتيجية التسعير</span>
+                                <span class="suggestion-desc">تسعير ذكي ومربح</span>
                             </div>
                         </button>
                     </div>
@@ -131,13 +127,13 @@
             <div class="input-area">
                 <div class="input-container">
                     <div class="input-wrapper">
-                        <textarea id="messageInput" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+                        <textarea id="messageInput" placeholder="اسأل أبو البزيز عن التسويق والأعمال..." rows="1"></textarea>
                         <button class="send-btn" id="sendBtn" disabled>
                             <i class="fas fa-arrow-up"></i>
                         </button>
                     </div>
                 </div>
-                <p class="input-disclaimer">أبو البزيز قد يرتكب أخطاء. تحقق من المعلومات المهمة.</p>
+                <p class="input-disclaimer">أبو البزيز مستشار ذكي مبني على محتوى كتاب التسويق. تحقق من المعلومات المهمة.</p>
             </div>
         </main>
     </div>

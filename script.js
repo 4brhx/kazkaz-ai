@@ -1,5 +1,5 @@
 // ============ Configuration ============
-const API_KEY = 'AIzaSyBCK4eZr08MBA1trSU03G7s6RG6ii3v9Hs';
+const API_KEY = 'AIzaSyA3I1DbGJOlgefXh43Xa1FUIyiXwBCZMCU';
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 // ============ DOM Elements ============

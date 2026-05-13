@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const API_KEY = process.env.DEEPSEEK_API_KEY;
+    const API_KEY = process.env.OPENROUTER_API_KEY;
 
     try {
         const messages = [];
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
                 const role = content.role === 'model' ? 'assistant' : 'user';
                 const parts = content.parts || [];
 
-                // Extract text only - DeepSeek text-only model
+                // Extract text only
                 let textContent = '';
                 for (const part of parts) {
                     if (part.text) {
@@ -75,14 +75,16 @@ export default async function handler(req, res) {
             ...messages
         ];
 
-        const response = await fetch('https://api.deepseek.com/chat/completions', {
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}`
+                'Authorization': `Bearer ${API_KEY}`,
+                'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
+                'X-Title': 'Abu Al-Baziz AI'
             },
             body: JSON.stringify({
-                model: 'deepseek-v4-flash',
+                model: 'deepseek/deepseek-chat-v4-0324',
                 messages: allMessages,
                 max_tokens: 8192,
                 temperature: 0.7

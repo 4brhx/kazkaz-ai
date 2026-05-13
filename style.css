@@ -748,6 +748,7 @@ body {
 /* ===== Input Area ===== */
 .input-area {
     padding: 18px 24px;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px));
     background: var(--header-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -970,6 +971,7 @@ body {
 
     .input-area {
         padding: 14px;
+        padding-bottom: calc(14px + env(safe-area-inset-bottom, 12px));
     }
 }
 

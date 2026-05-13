@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const API_KEY = 'sk-a4756417a5f74770a067240e6ead93fd';
+    const API_KEY = process.env.DEEPSEEK_API_KEY;
 
     try {
         const messages = [];
@@ -12,17 +12,16 @@ export default async function handler(req, res) {
                 const role = content.role === 'model' ? 'assistant' : 'user';
                 const parts = content.parts || [];
 
-                const messageParts = [];
+                // Extract text only - DeepSeek text-only model
+                let textContent = '';
                 for (const part of parts) {
                     if (part.text) {
-                        messageParts.push({ type: 'text', text: part.text });
+                        textContent += part.text;
                     }
                 }
 
-                if (messageParts.length === 1 && messageParts[0].type === 'text') {
-                    messages.push({ role, content: messageParts[0].text });
-                } else if (messageParts.length > 0) {
-                    messages.push({ role, content: messageParts });
+                if (textContent) {
+                    messages.push({ role, content: textContent });
                 }
             }
         }

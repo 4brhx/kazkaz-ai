@@ -847,25 +847,6 @@ body {
     box-shadow: 0 0 0 4px rgba(124, 92, 252, 0.1), 0 4px 20px rgba(124, 92, 252, 0.1);
 }
 
-.file-upload-btn {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 1.15rem;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 10px;
-    transition: all var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.file-upload-btn:hover {
-    color: var(--accent);
-    background: rgba(124, 92, 252, 0.1);
-}
-
 #messageInput {
     flex: 1;
     border: none;
@@ -915,9 +896,28 @@ body {
     transform: translateY(0) scale(0.95);
 }
 
-/* ===== File Preview ===== */
+/* ===== File Upload & Preview ===== */
+.file-upload-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-upload-btn:hover {
+    color: var(--accent);
+    background: rgba(124, 92, 252, 0.1);
+}
+
 .file-preview {
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .file-preview-content {
@@ -926,7 +926,7 @@ body {
     gap: 10px;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 10px 14px;
     font-size: 0.85rem;
     color: var(--text-secondary);
@@ -935,6 +935,7 @@ body {
 
 .file-preview-content i {
     color: var(--accent);
+    font-size: 1.1rem;
 }
 
 .file-preview-content span {
@@ -942,6 +943,16 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.preview-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--glass-border);
 }
 
 .remove-file-btn {
@@ -949,14 +960,33 @@ body {
     border: none;
     color: var(--danger);
     cursor: pointer;
-    padding: 5px;
-    font-size: 0.85rem;
-    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 0.9rem;
+    border-radius: 8px;
     transition: all var(--transition);
 }
 
 .remove-file-btn:hover {
     background: rgba(255, 71, 87, 0.12);
+}
+
+/* ===== Message File Badge ===== */
+.msg-file-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124, 92, 252, 0.1);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.msg-file-badge i {
+    font-size: 0.7rem;
 }
 
 /* ===== Disclaimer ===== */

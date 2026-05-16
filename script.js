@@ -20,12 +20,20 @@ const chatTitle = document.getElementById('chatTitle');
 const modelFreeBtn = document.getElementById('modelFree');
 const modelPlusBtn = document.getElementById('modelPlus');
 const headerModelBadge = document.getElementById('headerModelBadge');
+const fileUploadBtn = document.getElementById('fileUploadBtn');
+const fileInput = document.getElementById('fileInput');
+const filePreview = document.getElementById('filePreview');
+const imagePreviewThumb = document.getElementById('imagePreviewThumb');
+const fileIcon = document.getElementById('fileIcon');
+const fileName = document.getElementById('fileName');
+const removeFileBtn = document.getElementById('removeFileBtn');
 
 // ===== State =====
 let conversations = [];
 let currentConversationId = null;
 let isGenerating = false;
 let isPlusMode = false;
+let attachedFile = null; // { name, type, base64, isImage }
 
 // ===== Initialize =====
 function init() {
@@ -63,6 +71,11 @@ function setupEventListeners() {
     modelFreeBtn.addEventListener('click', () => setMode(false));
     modelPlusBtn.addEventListener('click', () => setMode(true));
 
+    // File upload
+    fileUploadBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', handleFileSelect);
+    removeFileBtn.addEventListener('click', removeAttachedFile);
+
     // Suggestion buttons
     document.querySelectorAll('.suggestion-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -72,6 +85,81 @@ function setupEventListeners() {
             sendMessage();
         });
     });
+}
+
+// ===== File Handling =====
+function handleFileSelect(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const maxSize = 20 * 1024 * 1024; // 20MB
+    if (file.size > maxSize) {
+        alert('حجم الملف كبير جداً. الحد الأقصى 20MB');
+        fileInput.value = '';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const base64 = event.target.result;
+        const isImage = file.type.startsWith('image/');
+
+        attachedFile = {
+            name: file.name,
+            type: file.type,
+            base64: base64,
+            isImage: isImage
+        };
+
+        // Show preview
+        filePreview.style.display = 'block';
+        fileName.textContent = file.name;
+
+        if (isImage) {
+            imagePreviewThumb.src = base64;
+            imagePreviewThumb.style.display = 'block';
+            fileIcon.style.display = 'none';
+        } else {
+            imagePreviewThumb.style.display = 'none';
+            fileIcon.style.display = 'inline';
+            fileIcon.className = getFileIconClass(file.name);
+        }
+
+        updateSendButton();
+    };
+    reader.readAsDataURL(file);
+    fileInput.value = '';
+}
+
+function removeAttachedFile() {
+    attachedFile = null;
+    filePreview.style.display = 'none';
+    imagePreviewThumb.src = '';
+    imagePreviewThumb.style.display = 'none';
+    fileIcon.style.display = 'none';
+    fileName.textContent = '';
+    updateSendButton();
+}
+
+function getFileIconClass(filename) {
+    const ext = filename.split('.').pop().toLowerCase();
+    const iconMap = {
+        'pdf': 'fas fa-file-pdf',
+        'txt': 'fas fa-file-alt',
+        'md': 'fas fa-file-alt',
+        'csv': 'fas fa-file-csv',
+        'json': 'fas fa-file-code',
+        'js': 'fas fa-file-code',
+        'py': 'fas fa-file-code',
+        'html': 'fas fa-file-code',
+        'css': 'fas fa-file-code'
+    };
+    return iconMap[ext] || 'fas fa-file';
+}
+
+function updateSendButton() {
+    const hasContent = messageInput.value.trim().length > 0 || attachedFile !== null;
+    sendBtn.disabled = !hasContent || isGenerating;
 }
 
 // ===== Model Mode =====
@@ -134,6 +222,7 @@ function startNewChat() {
     messagesList.innerHTML = '';
     welcomeScreen.style.display = 'flex';
     chatTitle.textContent = 'ChatGPT';
+    removeAttachedFile();
     renderConversationsList();
 }
 
@@ -176,7 +265,7 @@ function loadConversation(id) {
     chatTitle.textContent = conv.title;
 
     conv.messages.forEach(msg => {
-        appendMessageToDOM(msg.role, msg.content);
+        appendMessageToDOM(msg.role, msg.content, msg.fileName);
     });
 
     renderConversationsList();
@@ -207,10 +296,7 @@ function handleInputChange() {
     // Auto-resize textarea
     messageInput.style.height = 'auto';
     messageInput.style.height = Math.min(messageInput.scrollHeight, 150) + 'px';
-    
-    // Enable/disable send button
-    const hasContent = messageInput.value.trim().length > 0;
-    sendBtn.disabled = !hasContent || isGenerating;
+    updateSendButton();
 }
 
 function handleKeyDown(e) {
@@ -225,7 +311,7 @@ function handleKeyDown(e) {
 // ===== Message Sending =====
 async function sendMessage() {
     const text = messageInput.value.trim();
-    if (!text) return;
+    if (!text && !attachedFile) return;
     if (isGenerating) return;
 
     // Hide welcome screen
@@ -233,23 +319,42 @@ async function sendMessage() {
 
     // Create conversation if needed
     if (!currentConversationId) {
-        createConversation(text);
+        createConversation(text || (attachedFile ? attachedFile.name : 'محادثة'));
     }
 
     const conv = getCurrentConversation();
 
-    // Add user message to conversation
-    conv.messages.push({ role: 'user', content: text });
+    // Prepare message data
+    const userMsg = {
+        role: 'user',
+        content: text,
+        fileName: attachedFile ? attachedFile.name : null,
+        fileType: attachedFile ? attachedFile.type : null,
+        fileBase64: attachedFile ? attachedFile.base64 : null,
+        isImage: attachedFile ? attachedFile.isImage : false
+    };
+
+    // Save to conversation (without base64 to save storage)
+    conv.messages.push({
+        role: 'user',
+        content: text,
+        fileName: attachedFile ? attachedFile.name : null,
+        hasFile: !!attachedFile
+    });
     saveConversations();
 
     // Display user message
-    appendMessageToDOM('user', text);
+    appendMessageToDOM('user', text, attachedFile ? attachedFile.name : null);
     scrollToBottom();
+
+    // Store file data before clearing
+    const fileToSend = attachedFile;
 
     // Clear input
     messageInput.value = '';
     messageInput.style.height = 'auto';
-    handleInputChange();
+    removeAttachedFile();
+    updateSendButton();
 
     // Show typing indicator
     const typingEl = showTypingIndicator();
@@ -258,15 +363,37 @@ async function sendMessage() {
 
     try {
         // Build API request body
-        const contents = conv.messages.map(msg => ({
-            role: msg.role === 'user' ? 'user' : 'model',
-            parts: [{ text: msg.content }]
-        }));
+        const contents = [];
+        for (const msg of conv.messages) {
+            const parts = [];
+            if (msg.content) {
+                parts.push({ text: msg.content });
+            }
+            contents.push({
+                role: msg.role === 'user' ? 'user' : 'model',
+                parts: parts
+            });
+        }
+
+        // Add file to last user message if present
+        const requestBody = {
+            contents,
+            plusMode: isPlusMode
+        };
+
+        if (fileToSend) {
+            requestBody.file = {
+                name: fileToSend.name,
+                type: fileToSend.type,
+                base64: fileToSend.base64,
+                isImage: fileToSend.isImage
+            };
+        }
 
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents, plusMode: isPlusMode })
+            body: JSON.stringify(requestBody)
         });
 
         const data = await response.json();
@@ -293,12 +420,12 @@ async function sendMessage() {
         scrollToBottom();
     } finally {
         isGenerating = false;
-        handleInputChange();
+        updateSendButton();
     }
 }
 
 // ===== DOM Manipulation =====
-function appendMessageToDOM(role, content) {
+function appendMessageToDOM(role, content, attachedFileName) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${role === 'user' ? 'user-message' : 'ai-message'}`;
 
@@ -308,7 +435,15 @@ function appendMessageToDOM(role, content) {
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    contentDiv.innerHTML = role === 'user' ? escapeHTML(content) : formatMarkdown(content);
+
+    let html = '';
+    if (attachedFileName) {
+        html += `<div class="msg-file-badge"><i class="fas fa-paperclip"></i> ${escapeHTML(attachedFileName)}</div>`;
+    }
+    if (content) {
+        html += role === 'user' ? escapeHTML(content) : formatMarkdown(content);
+    }
+    contentDiv.innerHTML = html;
 
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(contentDiv);

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ChatGPT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Animated Background -->
+        <div class="bg-decoration">
+            <div class="bg-orb bg-orb-1"></div>
+            <div class="bg-orb bg-orb-2"></div>
+            <div class="bg-orb bg-orb-3"></div>
+        </div>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">ChatGPT</span>
+                        <span class="logo-subtitle">مساعدك الذكي</span>
+                    </div>
+                </div>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>محادثة جديدة</span>
+                </button>
+            </div>
+            <div class="sidebar-section-title">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span>المحادثات السابقة</span>
+            </div>
+            <div class="sidebar-conversations" id="conversationsList">
+                <!-- Conversations will be inserted here -->
+            </div>
+            <div class="sidebar-footer">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <span>الوضع الداكن</span>
+                </button>
+                <div class="sidebar-brand">
+                    <span>ChatGPT Clone</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <!-- Top Bar -->
+            <header class="chat-header">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-center">
+                    <div class="header-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">متصل</span>
+                    </div>
+                    <h1 class="chat-title" id="chatTitle">ChatGPT</h1>
+                </div>
+                <div class="header-spacer"></div>
+            </header>
+
+            <!-- Messages Area -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-badge">
+                        <span>مدعوم بالذكاء الاصطناعي</span>
+                    </div>
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>مرحباً بك في <span class="gradient-text">ChatGPT</span></h2>
+                    <p>مساعدك الذكي الذي يفهمك. اسأل أي سؤال وسأساعدك بأفضل طريقة ممكنة.</p>
+                    <div class="suggestions">
+                        <button class="suggestion-btn" data-text="اشرحلي الذكاء الاصطناعي بشكل مبسط">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <span class="suggestion-title">اشرحلي الذكاء الاصطناعي</span>
+                                <span class="suggestion-desc">شرح مبسط وواضح</span>
+                            </div>
+                        </button>
+                        <button class="suggestion-btn" data-text="ساعدني أكتب كود بايثون">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <span class="suggestion-title">ساعدني أكتب كود</span>
+                                <span class="suggestion-desc">برمجة وتطوير</span>
+                            </div>
+                        </button>
+                        <button class="suggestion-btn" data-text="اكتبلي مقال عن التكنولوجيا">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <span class="suggestion-title">اكتبلي مقال</span>
+                                <span class="suggestion-desc">كتابة إبداعية</span>
+                            </div>
+                        </button>
+                        <button class="suggestion-btn" data-text="ترجملي هذا النص للإنجليزي">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <span class="suggestion-title">ترجملي نص</span>
+                                <span class="suggestion-desc">ترجمة احترافية</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="messages-list" id="messagesList"></div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea id="messageInput" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+                        <button class="send-btn" id="sendBtn" disabled>
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="input-disclaimer">ChatGPT قد يرتكب أخطاء. تحقق من المعلومات المهمة.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

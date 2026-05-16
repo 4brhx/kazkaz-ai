@@ -1,7 +1,8 @@
 // ===== Constants =====
 const API_URL = '/api/chat';
-const STORAGE_KEY = 'kazkaz_conversations';
-const THEME_KEY = 'kazkaz_theme';
+const STORAGE_KEY = 'chatgpt_conversations';
+const THEME_KEY = 'chatgpt_theme';
+const MODE_KEY = 'chatgpt_mode';
 
 // ===== DOM Elements =====
 const sidebar = document.getElementById('sidebar');
@@ -16,18 +17,24 @@ const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
 const themeToggle = document.getElementById('themeToggle');
 const chatTitle = document.getElementById('chatTitle');
+const modelFreeBtn = document.getElementById('modelFree');
+const modelPlusBtn = document.getElementById('modelPlus');
+const headerModelBadge = document.getElementById('headerModelBadge');
 
 // ===== State =====
 let conversations = [];
 let currentConversationId = null;
 let isGenerating = false;
+let isPlusMode = false;
 
 // ===== Initialize =====
 function init() {
     loadConversations();
     loadTheme();
+    loadMode();
     renderConversationsList();
     setupEventListeners();
+    updateModelUI();
 }
 
 // ===== Event Listeners =====
@@ -52,6 +59,10 @@ function setupEventListeners() {
     // Theme toggle
     themeToggle.addEventListener('click', toggleTheme);
 
+    // Model selector
+    modelFreeBtn.addEventListener('click', () => setMode(false));
+    modelPlusBtn.addEventListener('click', () => setMode(true));
+
     // Suggestion buttons
     document.querySelectorAll('.suggestion-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -61,6 +72,32 @@ function setupEventListeners() {
             sendMessage();
         });
     });
+}
+
+// ===== Model Mode =====
+function loadMode() {
+    const saved = localStorage.getItem(MODE_KEY);
+    isPlusMode = saved === 'plus';
+}
+
+function setMode(plus) {
+    isPlusMode = plus;
+    localStorage.setItem(MODE_KEY, plus ? 'plus' : 'free');
+    updateModelUI();
+}
+
+function updateModelUI() {
+    if (isPlusMode) {
+        modelFreeBtn.classList.remove('active');
+        modelPlusBtn.classList.add('active');
+        headerModelBadge.innerHTML = '<i class="fas fa-crown"></i><span>Plus</span>';
+        headerModelBadge.classList.add('plus');
+    } else {
+        modelFreeBtn.classList.add('active');
+        modelPlusBtn.classList.remove('active');
+        headerModelBadge.innerHTML = '<i class="fas fa-zap"></i><span>عادي</span>';
+        headerModelBadge.classList.remove('plus');
+    }
 }
 
 // ===== Sidebar =====
@@ -96,7 +133,7 @@ function startNewChat() {
     currentConversationId = null;
     messagesList.innerHTML = '';
     welcomeScreen.style.display = 'flex';
-    chatTitle.textContent = 'أبو البزيز';
+    chatTitle.textContent = 'ChatGPT';
     renderConversationsList();
 }
 
@@ -220,7 +257,7 @@ async function sendMessage() {
     sendBtn.disabled = true;
 
     try {
-        // Build API request body - text only
+        // Build API request body
         const contents = conv.messages.map(msg => ({
             role: msg.role === 'user' ? 'user' : 'model',
             parts: [{ text: msg.content }]
@@ -229,7 +266,7 @@ async function sendMessage() {
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents })
+            body: JSON.stringify({ contents, plusMode: isPlusMode })
         });
 
         const data = await response.json();
@@ -252,7 +289,7 @@ async function sendMessage() {
 
     } catch (error) {
         removeTypingIndicator(typingEl);
-        appendMessageToDOM('model', `⚠️ خطأ: ${error.message}`);
+        appendMessageToDOM('model', `خطأ: ${error.message}`);
         scrollToBottom();
     } finally {
         isGenerating = false;

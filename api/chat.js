@@ -1,5 +1,3 @@
-import { BOOK_PROMPT } from './book-content.js';
-
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
@@ -9,6 +7,8 @@ export default async function handler(req, res) {
 
     try {
         const messages = [];
+        const isPlusMode = req.body.plusMode || false;
+
         if (req.body.contents) {
             for (const content of req.body.contents) {
                 const role = content.role === 'model' ? 'assistant' : 'user';
@@ -25,8 +25,15 @@ export default async function handler(req, res) {
             }
         }
 
+        // نموذج عادي (مجاني/خفيف) vs نموذج بلس (قوي)
+        const model = isPlusMode
+            ? 'google/gemini-2.5-flash'
+            : 'google/gemini-2.0-flash-lite-001';
+
+        const systemPrompt = `You are ChatGPT, a helpful, creative, and knowledgeable AI assistant made by OpenAI. You can help with anything: answering questions, writing code, creative writing, analysis, math, science, translations, and much more. Be friendly, clear, and thorough in your responses. Respond in the same language the user writes in.`;
+
         const allMessages = [
-            { role: 'system', content: BOOK_PROMPT },
+            { role: 'system', content: systemPrompt },
             ...messages
         ];
 
@@ -36,12 +43,12 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${API_KEY}`,
                 'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
-                'X-Title': 'Abu Al-Baziz AI'
+                'X-Title': 'ChatGPT'
             },
             body: JSON.stringify({
-                model: 'google/gemini-2.5-flash',
+                model: model,
                 messages: allMessages,
-                max_tokens: 8192,
+                max_tokens: isPlusMode ? 16384 : 4096,
                 temperature: 0.7
             })
         });

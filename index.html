@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>أبو البزيز AI</title>
+    <title>ChatGPT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -27,10 +27,10 @@
             <div class="sidebar-header">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
                     <div class="logo-text">
-                        <span class="logo-name">أبو البزيز</span>
+                        <span class="logo-name">ChatGPT</span>
                         <span class="logo-subtitle">مساعدك الذكي</span>
                     </div>
                 </div>
@@ -39,6 +39,19 @@
                     <span>محادثة جديدة</span>
                 </button>
             </div>
+
+            <!-- Model Selector -->
+            <div class="model-selector">
+                <button class="model-btn active" id="modelFree" data-mode="free">
+                    <i class="fas fa-zap"></i>
+                    <span>عادي</span>
+                </button>
+                <button class="model-btn" id="modelPlus" data-mode="plus">
+                    <i class="fas fa-crown"></i>
+                    <span>Plus</span>
+                </button>
+            </div>
+
             <div class="sidebar-section-title">
                 <i class="fas fa-clock-rotate-left"></i>
                 <span>المحادثات السابقة</span>
@@ -52,7 +65,7 @@
                     <span>الوضع الداكن</span>
                 </button>
                 <div class="sidebar-brand">
-                    <span>صنع بـ ❤️</span>
+                    <span>ChatGPT Clone</span>
                 </div>
             </div>
         </aside>
@@ -69,9 +82,12 @@
                         <span class="status-dot"></span>
                         <span class="status-text">متصل</span>
                     </div>
-                    <h1 class="chat-title" id="chatTitle">أبو البزيز</h1>
+                    <h1 class="chat-title" id="chatTitle">ChatGPT</h1>
                 </div>
-                <div class="header-spacer"></div>
+                <div class="header-model-badge" id="headerModelBadge">
+                    <i class="fas fa-zap"></i>
+                    <span>عادي</span>
+                </div>
             </header>
 
             <!-- Messages Area -->
@@ -81,9 +97,9 @@
                         <span>مدعوم بالذكاء الاصطناعي</span>
                     </div>
                     <div class="welcome-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h2>مرحباً بك في <span class="gradient-text">أبو البزيز</span></h2>
+                    <h2>مرحباً بك في <span class="gradient-text">ChatGPT</span></h2>
                     <p>مساعدك الذكي الذي يفهمك. اسأل أي سؤال وسأساعدك بأفضل طريقة ممكنة.</p>
                     <div class="suggestions">
                         <button class="suggestion-btn" data-text="اشرحلي الذكاء الاصطناعي بشكل مبسط">
@@ -137,7 +153,7 @@
                         </button>
                     </div>
                 </div>
-                <p class="input-disclaimer">أبو البزيز قد يرتكب أخطاء. تحقق من المعلومات المهمة.</p>
+                <p class="input-disclaimer">ChatGPT قد يرتكب أخطاء. تحقق من المعلومات المهمة.</p>
             </div>
         </main>
     </div>

@@ -25,12 +25,12 @@ export default async function handler(req, res) {
             }
         }
 
-        // نموذج عادي (مجاني/خفيف) vs نموذج بلس (قوي)
+        // النموذج العادي: خفيف وسريع | البلس: GPT-5 أقوى نموذج
         const model = isPlusMode
-            ? 'google/gemini-2.5-flash'
-            : 'google/gemini-2.0-flash-lite-001';
+            ? 'openai/gpt-5'
+            : 'openai/gpt-4o-mini';
 
-        const systemPrompt = `You are ChatGPT, a helpful, creative, and knowledgeable AI assistant made by OpenAI. You can help with anything: answering questions, writing code, creative writing, analysis, math, science, translations, and much more. Be friendly, clear, and thorough in your responses. Respond in the same language the user writes in.`;
+        const systemPrompt = `You are ChatGPT, a helpful, creative, and knowledgeable AI assistant made by OpenAI. You can help with anything: answering questions, writing code, creative writing, analysis, math, science, translations, image analysis, and much more. Be friendly, clear, and thorough in your responses. Respond in the same language the user writes in. You are the latest version of ChatGPT Plus.`;
 
         const allMessages = [
             { role: 'system', content: systemPrompt },
@@ -43,12 +43,12 @@ export default async function handler(req, res) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${API_KEY}`,
                 'HTTP-Referer': 'https://kazkaz-ai.vercel.app',
-                'X-Title': 'ChatGPT'
+                'X-Title': 'ChatGPT Plus'
             },
             body: JSON.stringify({
                 model: model,
                 messages: allMessages,
-                max_tokens: isPlusMode ? 16384 : 4096,
+                max_tokens: isPlusMode ? 32768 : 4096,
                 temperature: 0.7
             })
         });

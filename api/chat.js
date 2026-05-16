@@ -7,9 +7,7 @@ export default async function handler(req, res) {
 
     try {
         const messages = [];
-        const isPlusMode = req.body.plusMode || false;
         const file = req.body.file || null;
-        const hasImage = file && file.isImage;
 
         if (req.body.contents) {
             for (let i = 0; i < req.body.contents.length; i++) {
@@ -23,12 +21,10 @@ export default async function handler(req, res) {
                     }
                 }
 
-                // If this is the last user message and has a file attached
                 const isLastUserMsg = (i === req.body.contents.length - 1) && role === 'user';
 
                 if (isLastUserMsg && file) {
                     if (file.isImage) {
-                        // Send image as vision content
                         const msgContent = [];
                         if (textContent) {
                             msgContent.push({ type: 'text', text: textContent });
@@ -37,13 +33,10 @@ export default async function handler(req, res) {
                         }
                         msgContent.push({
                             type: 'image_url',
-                            image_url: {
-                                url: file.base64
-                            }
+                            image_url: { url: file.base64 }
                         });
                         messages.push({ role, content: msgContent });
                     } else {
-                        // Non-image file: extract text from base64 and append
                         let fileText = '';
                         try {
                             const base64Data = file.base64.split(',')[1];
@@ -62,15 +55,8 @@ export default async function handler(req, res) {
             }
         }
 
-        // اختيار النموذج - فقط نماذج ChatGPT من OpenAI
-        let model;
-        if (hasImage) {
-            // الصور تحتاج نموذج يدعم Vision
-            model = isPlusMode ? 'openai/gpt-4o' : 'openai/gpt-4o-mini';
-        } else {
-            // نص عادي
-            model = isPlusMode ? 'openai/gpt-4o' : 'openai/gpt-4o-mini';
-        }
+        // نموذج واحد قوي - GPT-4o لكل شي
+        const model = 'openai/gpt-4o';
 
         const systemPrompt = `You are ChatGPT, a helpful, creative, and knowledgeable AI assistant made by OpenAI. You can help with anything: answering questions, writing code, creative writing, analysis, math, science, translations, image analysis, file reading, and much more. Be friendly, clear, and thorough in your responses. Respond in the same language the user writes in. You are the latest version of ChatGPT.`;
 
@@ -90,7 +76,7 @@ export default async function handler(req, res) {
             body: JSON.stringify({
                 model: model,
                 messages: allMessages,
-                max_tokens: isPlusMode ? 16384 : 4096,
+                max_tokens: 16384,
                 temperature: 0.7
             })
         });

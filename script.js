@@ -2,7 +2,6 @@
 const API_URL = '/api/chat';
 const STORAGE_KEY = 'chatgpt_conversations';
 const THEME_KEY = 'chatgpt_theme';
-const MODE_KEY = 'chatgpt_mode';
 
 // ===== DOM Elements =====
 const sidebar = document.getElementById('sidebar');
@@ -17,8 +16,6 @@ const messageInput = document.getElementById('messageInput');
 const sendBtn = document.getElementById('sendBtn');
 const themeToggle = document.getElementById('themeToggle');
 const chatTitle = document.getElementById('chatTitle');
-const modelFreeBtn = document.getElementById('modelFree');
-const modelPlusBtn = document.getElementById('modelPlus');
 const headerModelBadge = document.getElementById('headerModelBadge');
 const fileUploadBtn = document.getElementById('fileUploadBtn');
 const fileInput = document.getElementById('fileInput');
@@ -32,17 +29,14 @@ const removeFileBtn = document.getElementById('removeFileBtn');
 let conversations = [];
 let currentConversationId = null;
 let isGenerating = false;
-let isPlusMode = false;
 let attachedFile = null; // { name, type, base64, isImage }
 
 // ===== Initialize =====
 function init() {
     loadConversations();
     loadTheme();
-    loadMode();
     renderConversationsList();
     setupEventListeners();
-    updateModelUI();
 }
 
 // ===== Event Listeners =====
@@ -66,10 +60,6 @@ function setupEventListeners() {
 
     // Theme toggle
     themeToggle.addEventListener('click', toggleTheme);
-
-    // Model selector
-    modelFreeBtn.addEventListener('click', () => setMode(false));
-    modelPlusBtn.addEventListener('click', () => setMode(true));
 
     // File upload
     fileUploadBtn.addEventListener('click', () => fileInput.click());
@@ -160,32 +150,6 @@ function getFileIconClass(filename) {
 function updateSendButton() {
     const hasContent = messageInput.value.trim().length > 0 || attachedFile !== null;
     sendBtn.disabled = !hasContent || isGenerating;
-}
-
-// ===== Model Mode =====
-function loadMode() {
-    const saved = localStorage.getItem(MODE_KEY);
-    isPlusMode = saved === 'plus';
-}
-
-function setMode(plus) {
-    isPlusMode = plus;
-    localStorage.setItem(MODE_KEY, plus ? 'plus' : 'free');
-    updateModelUI();
-}
-
-function updateModelUI() {
-    if (isPlusMode) {
-        modelFreeBtn.classList.remove('active');
-        modelPlusBtn.classList.add('active');
-        headerModelBadge.innerHTML = '<i class="fas fa-crown"></i><span>Plus</span>';
-        headerModelBadge.classList.add('plus');
-    } else {
-        modelFreeBtn.classList.add('active');
-        modelPlusBtn.classList.remove('active');
-        headerModelBadge.innerHTML = '<i class="fas fa-zap"></i><span>عادي</span>';
-        headerModelBadge.classList.remove('plus');
-    }
 }
 
 // ===== Sidebar =====
@@ -377,8 +341,7 @@ async function sendMessage() {
 
         // Add file to last user message if present
         const requestBody = {
-            contents,
-            plusMode: isPlusMode
+            contents
         };
 
         if (fileToSend) {
